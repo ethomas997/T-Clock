@@ -1,6 +1,10 @@
 #ifndef TCLOCK_GLOBAL_H
 #define TCLOCK_GLOBAL_H
 
+#ifndef SUPRESS_DEBUG_LOGGING
+#define SUPRESS_DEBUG_LOGGING 1  // supress extra debug logging because it's crashing
+#endif
+
 #define _CRT_SECURE_NO_DEPRECATE 1 // SHUT-UP About the New String Functions Already!!!
 
 #ifndef WINVER				// Allow use of features specific to Windows XP or later.
@@ -206,7 +210,7 @@ enum{ // Drop&File enum / registry settings
 #define DBGMSG_(fmt,...) __pragma(warning(suppress:4127)) do{static char _dbgbuf[1024]; sprintf(_dbgbuf,fmt,##__VA_ARGS__); MessageBoxA(0,_dbgbuf,"Debug",MB_SYSTEMMODAL|MB_SETFOREGROUND);}while(0)
 /// outputs a debug message using sprintf()
 #define DBGOUT_(fmt,...) __pragma(warning(suppress:4127)) do{static char _dbgbuf[1024]; sprintf(_dbgbuf,fmt,##__VA_ARGS__); OutputDebugStringA(_dbgbuf);}while(0)
-#ifdef _DEBUG
+#if defined(_DEBUG) && !SUPRESS_DEBUG_LOGGING
 #	ifndef LOGGING
 #		define LOGGING
 #	endif
