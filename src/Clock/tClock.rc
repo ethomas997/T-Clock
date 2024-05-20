@@ -1,151 +1,132 @@
 // Microsoft Visual C++ generated resource script.
 //
-#define APSTUDIO_HIDDEN_SYMBOLS
-#include <windows.h> // prepares some resource stuff such as WC_STATIC doesn't work without (also includes WinResrc.h)
-#include <prsht.h>
-#undef APSTUDIO_HIDDEN_SYMBOLS
-
-#include <commctrl.h> // UPDOWN_CLASS
 #include "../common/resource.h"
 #include "../common/control_extensions.h"
 #include "../common/utl_logging.h"
-#ifdef __GNUC__ //sadly we can't do this for MSVC as it's not smart enough to detect if it's 64 bit or 32 bit
-#   include "version.rc"
-#endif
 
 #define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
 //
 // Generated from the TEXTINCLUDE 2 resource.
 //
-#ifndef IDC_STATIC
-#   define IDC_STATIC (-1)
-#endif
+#include "WinResrc.h"
 
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// English (U.S.) resources
+// English (United States) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-#ifdef _WIN32
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
-#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Menu
 //
 
-IDR_MENU MENUEX 
+IDR_MENU MENUEX
 BEGIN
-    POPUP "",0,0,0
+    POPUP "",                               0,MFT_STRING,MFS_ENABLED
     BEGIN
-        MENUITEM "&Adjust date/time",               IDM_FWD_DATETIME,0,0
-//        MENUITEM "&Adjust date/time ex",               IDM_DATETIME_EX,0,0
-        MENUITEM "&Customize notification icons",   IDM_FWD_CUSTOMNOTIFYICONS,0,0
-        MENUITEM "",0,MFT_SEPARATOR,0
-        MENUITEM "Casca&de windows",                IDM_FWD_CASCADE,0,0
-        MENUITEM "Show windows stack&ed",           IDM_FWD_STACKED,0,0
-        MENUITEM "Show windows s&ide by side",      IDM_FWD_SIDEBYSIDE,0,0
-        MENUITEM "Toggle desktop",                  IDM_TOGGLE_DT,0,0
-//        MENUITEM "&Show the desktop",               IDM_FWD_SHOWDESKTOP,0,0
-        MENUITEM "Minimize all windows",            IDM_FWD_MINALL,0,0
-        MENUITEM "&Undo last window change",        IDM_FWD_UNDO,0,0
-        MENUITEM "",0,MFT_SEPARATOR,0
-        MENUITEM "&Task Manager",                   IDM_FWD_TASKMAN,0,0
-//        MENUITEM "",0,MFT_SEPARATOR,0
-//        MENUITEM "&Lock the taskbar",               IDM_FWD_LOCKTASKBAR,0,0
-//        MENUITEM "&Lock all taskbars",              IDM_FWD_LOCKALLTASKBAR,0,0
-//        MENUITEM "Taskbar P&roperties",             IDM_FWD_TASKBARPROP,0,0
-        MENUITEM "",0,MFT_SEPARATOR,0
-        POPUP "Sounds && Audio Options",IDC_SOUNDAUDIO,0,0
+        MENUITEM "&Adjust date/time",           IDM_FWD_DATETIME,MFT_STRING,MFS_ENABLED
+        MENUITEM "&Customize notification icons", IDM_FWD_CUSTOMNOTIFYICONS,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "Casca&de windows",            IDM_FWD_CASCADE,MFT_STRING,MFS_ENABLED
+        MENUITEM "Show windows stack&ed",       IDM_FWD_STACKED,MFT_STRING,MFS_ENABLED
+        MENUITEM "Show windows s&ide by side",  IDM_FWD_SIDEBYSIDE,MFT_STRING,MFS_ENABLED
+        MENUITEM "Toggle desktop",              IDM_TOGGLE_DT,MFT_STRING,MFS_ENABLED
+        MENUITEM "Minimize all windows",        IDM_FWD_MINALL,MFT_STRING,MFS_ENABLED
+        MENUITEM "&Undo last window change",    IDM_FWD_UNDO,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "&Task Manager",               IDM_FWD_TASKMAN,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        POPUP "Sounds && Audio Options",        IDC_SOUNDAUDIO,MFT_STRING,MFS_ENABLED
         BEGIN
-            MENUITEM "Open Volume Controls",        IDM_VOLUMECONTROL,0,0
-            MENUITEM "Audio devices",               IDM_AUDIOPROP,0,0
+            MENUITEM "Open Volume Controls",        IDM_VOLUMECONTROL,MFT_STRING,MFS_ENABLED
+            MENUITEM "Audio devices",               IDM_AUDIOPROP,MFT_STRING,MFS_ENABLED
         END
-        POPUP "Network Drive(s)",IDC_NETWORK,0,0
+        POPUP "Network Drive(s)",               IDC_NETWORK,MFT_STRING,MFS_ENABLED
         BEGIN
-            MENUITEM "Map Network Drive",           IDM_MAPDRIVE,0,0
-            MENUITEM "Disconnect Network Drive",    IDM_DISCONNECT,0,0
+            MENUITEM "Map Network Drive",           IDM_MAPDRIVE,MFT_STRING,MFS_ENABLED
+            MENUITEM "Disconnect Network Drive",    IDM_DISCONNECT,MFT_STRING,MFS_ENABLED
         END
-        POPUP "T-Clock Quickys",IDC_QUICKYS,0,0
+        POPUP "T-Clock Quickys",                IDC_QUICKYS,MFT_STRING,MFS_ENABLED
         BEGIN
-            MENUITEM "Windows Explorer",            IDM_QUICKY_WINEXP,0,0
-            MENUITEM "Command Prompt",              IDM_QUICKY_DOS,0,0
-            MENUITEM "",0,MFT_SEPARATOR,0
-            MENUITEM "T-Clock Calendar",            IDM_SHOWCALENDER,0,0
-            MENUITEM "Time Sync (SNTP) options",    IDM_SNTP,0,0
-            MENUITEM "Synchronize time",            IDM_SNTP_SYNC,0,0
-            MENUITEM "",0,MFT_SEPARATOR,0
-            MENUITEM "Empty Recycle Bin",           IDM_QUICKY_EMPTYRB,0,0
+            MENUITEM "Windows Explorer",            IDM_QUICKY_WINEXP,MFT_STRING,MFS_ENABLED
+            MENUITEM "Command Prompt",              IDM_QUICKY_DOS,MFT_STRING,MFS_ENABLED
+            MENUITEM MFT_SEPARATOR
+            MENUITEM "T-Clock Calendar",            IDM_SHOWCALENDER,MFT_STRING,MFS_ENABLED
+            MENUITEM "Time Sync (SNTP) options",    IDM_SNTP,MFT_STRING,MFS_ENABLED
+            MENUITEM "Synchronize time",            IDM_SNTP_SYNC,MFT_STRING,MFS_ENABLED
+            MENUITEM MFT_SEPARATOR
+            MENUITEM "Empty Recycle Bin",           IDM_QUICKY_EMPTYRB,MFT_STRING,MFS_ENABLED
         END
-        POPUP "T-Clock Alarms",IDC_ALARMS,0,0
+        POPUP "T-Clock Alarms",                 IDC_ALARMS,MFT_STRING,MFS_ENABLED
         BEGIN
-            MENUITEM "Hourly Chime",                IDM_CHIME,0,MFS_DISABLED
-            MENUITEM "Add/Edit Alarm",              IDM_PROP_ALARM,0,0
+            MENUITEM "Hourly Chime",                IDM_CHIME,MFT_STRING,MFS_GRAYED
+            MENUITEM "Add/Edit Alarm",              IDM_PROP_ALARM,MFT_STRING,MFS_ENABLED
         END
-        POPUP "T-Clock Timers",IDC_TIMERS,0,0
+        POPUP "T-Clock Timers",                 IDC_TIMERS,MFT_STRING,MFS_ENABLED
         BEGIN
-            MENUITEM "Stopwatch",                   IDM_STOPWATCH,0,0
-            MENUITEM "Watch List\t(running timers)", IDM_TIMEWATCH,0,0
-            MENUITEM "Reset Watch List",            IDM_TIMEWATCHRESET,0,MFS_DISABLED
-            MENUITEM "Add/Edit Timers",              IDM_TIMER,0,0
+            MENUITEM "Stopwatch",                   IDM_STOPWATCH,MFT_STRING,MFS_ENABLED
+            MENUITEM "Watch List\t(running timers)", IDM_TIMEWATCH,MFT_STRING,MFS_ENABLED
+            MENUITEM "Reset Watch List",            IDM_TIMEWATCHRESET,MFT_STRING,MFS_GRAYED
+            MENUITEM "Add/Edit Timers",             IDM_TIMER,MFT_STRING,MFS_ENABLED
         END
-        MENUITEM "Display Properties",              IDM_DISPLAYPROP,0,0
-        MENUITEM "",0,MFT_SEPARATOR,0
-        MENUITEM "T-Clock Options",                 IDM_SHOWPROP,0,0
-        MENUITEM "Refresh T-Clock",                 IDM_REFRESHTCLOCK,0,0
-        MENUITEM "",0,MFT_SEPARATOR,0
-        POPUP "Exit Windows",IDC_EXITWIN,0,0
+        MENUITEM "Display Properties",          IDM_DISPLAYPROP,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "T-Clock Options",             IDM_SHOWPROP,MFT_STRING,MFS_ENABLED
+        MENUITEM "Refresh T-Clock",             IDM_REFRESHTCLOCK,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        POPUP "Exit Windows",                   IDC_EXITWIN,MFT_STRING,MFS_ENABLED
         BEGIN
-            MENUITEM "Lock",                        IDM_LOCK,0,0
-            MENUITEM "Log off",                     IDM_LOGOFF,0,0
-            MENUITEM "",0,MFT_SEPARATOR,0
-            MENUITEM "Sleep",                       IDM_SLEEP,0,0
-            MENUITEM "Hibernate",                   IDM_HIBERNATE,0,0
-            MENUITEM "Reboot",                      IDM_REBOOT,0,0
-            MENUITEM "Shut Down",                   IDM_SHUTDOWN,0,0
+            MENUITEM "Lock",                        IDM_LOCK,MFT_STRING,MFS_ENABLED
+            MENUITEM "Log off",                     IDM_LOGOFF,MFT_STRING,MFS_ENABLED
+            MENUITEM MFT_SEPARATOR
+            MENUITEM "Sleep",                       IDM_SLEEP,MFT_STRING,MFS_ENABLED
+            MENUITEM "Hibernate",                   IDM_HIBERNATE,MFT_STRING,MFS_ENABLED
+            MENUITEM "Reboot",                      IDM_REBOOT,MFT_STRING,MFS_ENABLED
+            MENUITEM "Shut Down",                   IDM_SHUTDOWN,MFT_STRING,MFS_ENABLED
         END
-        MENUITEM "Exit T-Clock",                    IDM_EXIT,0,0
-        MENUITEM "",IDS_NONE,MFT_SEPARATOR,0
-        MENUITEM "&Run...",                         IDM_FWD_RUNAPP,0,0
-        MENUITEM "Re&start Explorer",               IDM_RESTART_EXPLORER,0,0
-        MENUITEM "E&xit Explorer",                  IDM_EXIT_EXPLORER,0,0
+        MENUITEM "Exit T-Clock",                IDM_EXIT,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "&Run...",                     IDM_FWD_RUNAPP,MFT_STRING,MFS_ENABLED
+        MENUITEM "Re&start Explorer",           IDM_RESTART_EXPLORER,MFT_STRING,MFS_ENABLED
+        MENUITEM "E&xit Explorer",              IDM_EXIT_EXPLORER,MFT_STRING,MFS_ENABLED
     END
 END
 
 IDR_TIMER MENUEX
 BEGIN
-    POPUP "", 0, 0, 0
+    POPUP "",                               0,MFT_STRING,MFS_ENABLED
     BEGIN
-        MENUITEM "&Restart\tR", IDM_TIMER_RESTART, 0, 0
-        MENUITEM "&Stop\tS", IDM_TIMER_STOP, 0, 0
-        MENUITEM "&Hide\tH", IDM_TIMER_HIDE, 0, 0
-        MENUITEM "&Edit\tE", IDM_TIMER_EDIT, 0, 0
-        MENUITEM "", 0, MFT_SEPARATOR, 0
-        MENUITEM "&Cleanup expired\tC", IDM_TIMER_CLEANUP, 0, 0
-        MENUITEM "Restart list\tShift+R", IDM_TIMER_ALL_RESTART, 0, 0
-        MENUITEM "Restore hidden", IDM_TIMER_RESTORE, 0, MFS_DISABLED
-        MENUITEM "Start all", IDM_TIMER_ALL_START, 0, 0
-        MENUITEM "Stop all", IDM_TIMER_ALL_STOP, 0, 0
-        MENUITEM "", 0, MFT_SEPARATOR, 0
-        POPUP "Timers", IDM_TIMER_LIST, 0, 0
+        MENUITEM "&Restart\tR",                 IDM_TIMER_RESTART,MFT_STRING,MFS_ENABLED
+        MENUITEM "&Stop\tS",                    IDM_TIMER_STOP,MFT_STRING,MFS_ENABLED
+        MENUITEM "&Hide\tH",                    IDM_TIMER_HIDE,MFT_STRING,MFS_ENABLED
+        MENUITEM "&Edit\tE",                    IDM_TIMER_EDIT,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "&Cleanup expired\tC",         IDM_TIMER_CLEANUP,MFT_STRING,MFS_ENABLED
+        MENUITEM "Restart list\tShift+R",       IDM_TIMER_ALL_RESTART,MFT_STRING,MFS_ENABLED
+        MENUITEM "Restore hidden",              IDM_TIMER_RESTORE,MFT_STRING,MFS_GRAYED
+        MENUITEM "Start all",                   IDM_TIMER_ALL_START,MFT_STRING,MFS_ENABLED
+        MENUITEM "Stop all",                    IDM_TIMER_ALL_STOP,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        POPUP "Timers",                         IDM_TIMER_LIST,MFT_STRING,MFS_ENABLED
         BEGIN
-            MENUITEM "Add/Edit Timers", IDM_TIMER, 0, 0
+            MENUITEM "Add/Edit Timers",             IDM_TIMER,MFT_STRING,MFS_ENABLED
         END
-        POPUP "Options", IDM_TIMER_OPTIONS, 0, 0
+        POPUP "Options",                        IDM_TIMER_OPTIONS,MFT_STRING,MFS_ENABLED
         BEGIN
-            MENUITEM "Click through when inactive", IDM_TIMER_OPT_OVERLAY, 0, 0
-            MENUITEM "Slightly transparent", IDM_TIMER_OPT_OPACITY_80, 0, 0
-            MENUITEM "Half transparent", IDM_TIMER_OPT_OPACITY_50, 0, 0
-            MENUITEM "Barely visible", IDM_TIMER_OPT_OPACITY_25, 0, 0
+            MENUITEM "Click through when inactive", IDM_TIMER_OPT_OVERLAY,MFT_STRING,MFS_ENABLED
+            MENUITEM "Slightly transparent",        IDM_TIMER_OPT_OPACITY_80,MFT_STRING,MFS_ENABLED
+            MENUITEM "Half transparent",            IDM_TIMER_OPT_OPACITY_50,MFT_STRING,MFS_ENABLED
+            MENUITEM "Barely visible",              IDM_TIMER_OPT_OPACITY_25,MFT_STRING,MFS_ENABLED
         END
-//        MENUITEM "Close\tESC", IDCANCEL, 0, 0
     END
 END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -153,85 +134,83 @@ END
 //
 
 IDD_PAGEABOUT DIALOGEX 0, 0, 310, 200
-STYLE DS_SHELLFONT | WS_CHILD | WS_DISABLED
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION
 CAPTION "About"
-FONT 8, "MS Shell Dlg"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
     GROUPBOX        "",IDC_ABT_TITLE,7,3,295,56
-    ICON            IDI_MAIN, IDC_STATIC, 26, 13, 32, 32, SS_ICON | SS_REALSIZEIMAGE
-    ICON            IDI_ABOUT_LOGO, IDI_ABOUT_LOGO, 228, 12, 32, 32, SS_ICON | SS_REALSIZEIMAGE
-    CTEXT           "White", IDC_ABT_StoicJoker, 261, 19, 38, 8, SS_CENTER
-    CTEXT           "Tiger", IDC_ABT_StoicJoker2, 261, 28, 38, 8, SS_CENTER
-    RTEXT           "web:", IDC_ABT_WEB, 64, 13, 29, 9, SS_RIGHT
-    RTEXT           "email:", IDC_ABT_MAIL, 64, 24, 29, 9, SS_RIGHT
-    RTEXT           "forum:", IDC_ABT_FORUM, 64, 35, 29, 9, SS_RIGHT
-    LTEXT           "https://github.com/White-Tiger/T-Clock", IDC_ABT_WEBuri, 95, 13, 129, 9, SS_LINK
-    LTEXT           "T-Clock@WhiteTiger.e4ward.com", IDC_ABT_MAILuri, 95, 24, 129, 9, SS_LINK
-    LTEXT           "http://donationcoder.com/forum/?board=324.0", IDC_ABT_FORUMuri, 95, 35, 129, 9, SS_LINK
-    AUTOCHECKBOX    "Regularly check for updates", IDC_UPDATE_RELEASE, 29, 47, 105, 8
-    AUTOCHECKBOX    "include beta versions", IDC_UPDATE_BETA, 142, 46, 83, 8
-    PUSHBUTTON      "check now", IDC_UPDATE_CHECK, 231, 44, 47, 12
-#   ifdef LOGGING
-    AUTOCHECKBOX    "Debug Logging", IDC_LOGGING, 232, 59, 65, 8
-#   endif
-    GROUPBOX        "T-Clock's History", IDC_STATIC, 7, 64, 295, 115
-    LTEXT           "The Original T-Clock was written by Kazubon in the mid to late 90's. It was released with Source Code included so that others could learn from and expand on its features", IDC_STATIC, 13, 74, 283, 20
-    LTEXT           "T-Clock2 is a modified version of Kazubon's Original code written by Two_toNe in 2003. Two_toNe added many new features that allowed it to run properly with the then new Windows XP themes.", IDC_STATIC, 13, 97, 283, 28
-    LTEXT           "",IDC_ABT_TCLOCK, 13, 127, 283, 50
-    AUTOCHECKBOX    "Start T-Clock Redux when Windows starts", IDC_STARTUP, 42, 184, 222, 11
+    ICON            IDI_MAIN,IDC_STATIC,26,13,32,32,SS_REALSIZEIMAGE
+    ICON            IDI_ABOUT_LOGO,IDI_ABOUT_LOGO,228,12,32,32,SS_REALSIZEIMAGE
+    CTEXT           "White",IDC_ABT_StoicJoker,261,19,38,8
+    CTEXT           "Tiger",IDC_ABT_StoicJoker2,261,28,38,8
+    RTEXT           "web:",IDC_ABT_WEB,64,13,29,9
+    RTEXT           "email:",IDC_ABT_MAIL,64,24,29,9
+    RTEXT           "forum:",IDC_ABT_FORUM,64,35,29,9
+    LTEXT           "https://github.com/White-Tiger/T-Clock",IDC_ABT_WEBuri,95,13,129,9,SS_NOPREFIX | SS_NOTIFY | WS_TABSTOP
+    LTEXT           "T-Clock@WhiteTiger.e4ward.com",IDC_ABT_MAILuri,95,24,129,9,SS_NOPREFIX | SS_NOTIFY | WS_TABSTOP
+    LTEXT           "http://donationcoder.com/forum/?board=324.0",IDC_ABT_FORUMuri,95,35,129,9,SS_NOPREFIX | SS_NOTIFY | WS_TABSTOP
+    CONTROL         "Regularly check for updates",IDC_UPDATE_RELEASE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,29,47,105,8
+    CONTROL         "include beta versions",IDC_UPDATE_BETA,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,142,46,83,8
+    PUSHBUTTON      "check now",IDC_UPDATE_CHECK,231,44,47,12
+    GROUPBOX        "T-Clock's History",IDC_STATIC,7,64,295,115
+    LTEXT           "The Original T-Clock was written by Kazubon in the mid to late 90's. It was released with Source Code included so that others could learn from and expand on its features",IDC_STATIC,13,74,283,20
+    LTEXT           "T-Clock2 is a modified version of Kazubon's Original code written by Two_toNe in 2003. Two_toNe added many new features that allowed it to run properly with the then new Windows XP themes.",IDC_STATIC,13,97,283,28
+    LTEXT           "",IDC_ABT_TCLOCK,13,127,283,50
+    CONTROL         "Start T-Clock Redux when Windows starts",IDC_STARTUP,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,42,184,222,11
 END
 
 IDD_PAGEALARM DIALOGEX 0, 0, 310, 199
-STYLE DS_SHELLFONT | WS_CHILD | WS_DISABLED
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION
 CAPTION "Alarms"
-FONT 8, "MS Shell Dlg"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    EDITTEXT        IDC_ALRMMSG_SETTINGS, 221, 27, 76, 12, NOT WS_VISIBLE | ES_AUTOHSCROLL
-    EDITTEXT        IDC_ALRMMSG_TEXT, 221, 12, 76, 12, NOT WS_VISIBLE | ES_AUTOHSCROLL | ES_READONLY
-    GROUPBOX        "Alarms", IDC_STATIC, 7, 4, 294, 128
-    RTEXT           "Name", IDC_STATIC, 9, 19, 35, 11, SS_RIGHT
-    COMBOBOX        IDC_COMBOALARM, 48, 17, 114, 120, WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
-    PUSHBUTTON      "", IDC_DELALARM, 163, 17, 13, 13, BS_ICON
-    AUTOCHECKBOX    "enabled", IDC_ALARM, 182, 19, 42, 11
-    RTEXT           "Time", IDC_LABTIMEALARM, 9, 43, 35, 11, SS_RIGHT
-    EDITTEXT        IDC_HOURALARM, 48, 41, 26, 13, ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER
-    CONTROL         "", IDC_SPINHOUR, UPDOWN_CLASS, UDS_ALIGNRIGHT | UDS_ARROWKEYS | UDS_NOTHOUSANDS | UDS_WRAP | UDS_AUTOBUDDY | UDS_SETBUDDYINT, 62, 41, 11, 12
-    CTEXT           ":", IDC_LABCOLON, 75, 43, 8, 10, SS_CENTER
-    EDITTEXT        IDC_MINUTEALARM, 84, 41, 26, 13, ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER
-    CONTROL         "", IDC_SPINMINUTE, UPDOWN_CLASS, UDS_ALIGNRIGHT | UDS_ARROWKEYS | UDS_NOTHOUSANDS | UDS_WRAP | UDS_AUTOBUDDY | UDS_SETBUDDYINT, 105, 68, 11, 12
-    CTEXT           "AM", IDC_AMPM_DISPLAY, 114, 43, 29, 8, SS_CENTER
-    AUTOCHECKBOX    "PM", IDC_AMPM_CHECK, 147, 43, 23, 8
-    AUTOCHECKBOX    "12H", IDC_12HOURALARM, 174, 43, 27, 8
-    AUTOCHECKBOX    "one-shot", IDC_ALRM_ONCE, 238, 20, 45, 8
-    PUSHBUTTON      "Days...", IDC_ALARMDAY, 242, 32, 33, 14
-    RTEXT           "Action", IDC_LABTIMEALARM_X, 9, 67, 35, 11, SS_RIGHT
-    COMBOBOX        IDC_FILEALARM, 48, 65, 229, 120, WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN | CBS_AUTOHSCROLL | CBS_HASSTRINGS
-    PUSHBUTTON      "...", IDC_BROWSEALARM, 278, 65, 12, 12
-    CONTROL         IDI_JACKRUSSEL, IDC_BMPJACK, WC_STATIC, NOT WS_VISIBLE | SS_BITMAP | SS_SUNKEN, 12, 78, 44, 50
-    RTEXT           "Test", IDC_LABTESTALARM, 59, 86, 18, 11, SS_RIGHT
-    PUSHBUTTON      "", IDC_TESTALARM, 80, 84, 13, 13, BS_ICON
-    AUTOCHECKBOX    "Chime hour", IDC_CHIMEALARM, 115, 85, 53, 11
-    AUTOCHECKBOX    "Repeat:", IDC_REPEATALARM, 228, 85, 37, 11
-    EDITTEXT        IDC_REPEATIMES, 266, 84, 26, 13, ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER
-    CONTROL         "", IDC_SPINTIMES, UPDOWN_CLASS, UDS_ALIGNRIGHT | UDS_ARROWKEYS | UDS_NOTHOUSANDS | UDS_AUTOBUDDY | UDS_SETBUDDYINT, 280, 84, 11, 12
-    AUTOCHECKBOX    "Show message window", IDC_MSG_ALARM, 83, 104, 90, 8
-    PUSHBUTTON      "window settings", IDCB_MSG_ALARM, 177, 101, 61, 14
-    AUTOCHECKBOX    "Blink clock", IDC_BLINKALARM, 83, 116, 51, 8
-    GROUPBOX        "", IDC_STATIC, 8, 136, 294, 56
-    AUTOCHECKBOX    "Hourly chime", IDC_JIHOU, 3, 136, 54, 8
-    RTEXT           "Action", IDC_LABSOUNDJIHOU, 9, 154, 35, 11, SS_RIGHT
-    COMBOBOX        IDC_FILEJIHOU, 48, 152, 229, 120, WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN | CBS_AUTOHSCROLL | CBS_HASSTRINGS
-    PUSHBUTTON      "...", IDC_BROWSEJIHOU, 278, 152, 12, 12
-    RTEXT           "Test", IDC_LABTESTJIHOU, 59, 174, 18, 11, SS_RIGHT
-    PUSHBUTTON      "", IDC_TESTJIHOU, 80, 172, 13, 13, BS_ICON
-    AUTOCHECKBOX    "Chime hour", IDC_REPEATJIHOU, 115, 174, 53, 11
-    AUTOCHECKBOX    "Blink clock", IDC_BLINKJIHOU, 242, 174, 51, 11
+    EDITTEXT        IDC_ALRMMSG_SETTINGS,221,27,76,12,ES_AUTOHSCROLL | NOT WS_VISIBLE
+    EDITTEXT        IDC_ALRMMSG_TEXT,221,12,76,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_VISIBLE
+    GROUPBOX        "Alarms",IDC_STATIC,7,4,294,128
+    RTEXT           "Name",IDC_STATIC,9,19,35,11
+    COMBOBOX        IDC_COMBOALARM,48,17,114,120,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "",IDC_DELALARM,163,17,13,13,BS_ICON
+    CONTROL         "enabled",IDC_ALARM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,182,19,42,11
+    RTEXT           "Time",IDC_LABTIMEALARM,9,43,35,11
+    EDITTEXT        IDC_HOURALARM,48,41,26,13,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "",IDC_SPINHOUR,"msctls_updown32",UDS_WRAP | UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,62,41,11,12
+    CTEXT           ":",IDC_LABCOLON,75,43,8,10
+    EDITTEXT        IDC_MINUTEALARM,84,41,26,13,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "",IDC_SPINMINUTE,"msctls_updown32",UDS_WRAP | UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,105,68,11,12
+    CTEXT           "AM",IDC_AMPM_DISPLAY,114,43,29,8
+    CONTROL         "PM",IDC_AMPM_CHECK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,147,43,23,8
+    CONTROL         "12H",IDC_12HOURALARM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,174,43,27,8
+    CONTROL         "one-shot",IDC_ALRM_ONCE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,238,20,45,8
+    PUSHBUTTON      "Days...",IDC_ALARMDAY,242,32,33,14
+    RTEXT           "Action",IDC_LABTIMEALARM_X,9,67,35,11
+    COMBOBOX        IDC_FILEALARM,48,65,229,120,CBS_DROPDOWN | CBS_AUTOHSCROLL | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "...",IDC_BROWSEALARM,278,65,12,12
+    CONTROL         IDI_JACKRUSSEL,IDC_BMPJACK,"Static",SS_BITMAP | SS_SUNKEN | NOT WS_VISIBLE,12,78,44,50
+    RTEXT           "Test",IDC_LABTESTALARM,59,86,18,11
+    PUSHBUTTON      "",IDC_TESTALARM,80,84,13,13,BS_ICON
+    CONTROL         "Chime hour",IDC_CHIMEALARM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,115,85,53,11
+    CONTROL         "Repeat:",IDC_REPEATALARM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,228,85,37,11
+    EDITTEXT        IDC_REPEATIMES,266,84,26,13,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "",IDC_SPINTIMES,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,280,84,11,12
+    CONTROL         "Show message window",IDC_MSG_ALARM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,83,104,90,8
+    PUSHBUTTON      "window settings",IDCB_MSG_ALARM,177,101,61,14
+    CONTROL         "Blink clock",IDC_BLINKALARM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,83,116,51,8
+    GROUPBOX        "",IDC_STATIC,8,136,294,56
+    CONTROL         "Hourly chime",IDC_JIHOU,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,136,54,8
+    RTEXT           "Action",IDC_LABSOUNDJIHOU,9,154,35,11
+    COMBOBOX        IDC_FILEJIHOU,48,152,229,120,CBS_DROPDOWN | CBS_AUTOHSCROLL | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "...",IDC_BROWSEJIHOU,278,152,12,12
+    RTEXT           "Test",IDC_LABTESTJIHOU,59,174,18,11
+    PUSHBUTTON      "",IDC_TESTJIHOU,80,172,13,13,BS_ICON
+    CONTROL         "Chime hour",IDC_REPEATJIHOU,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,115,174,53,11
+    CONTROL         "Blink clock",IDC_BLINKJIHOU,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,242,174,51,11
 END
 
-IDD_ALARMDAY DIALOGEX  0, 0, 187, 115
-STYLE DS_SHELLFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+IDD_ALARMDAY DIALOGEX 0, 0, 187, 115
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Days To Alarm"
-FONT 8, "MS Shell Dlg"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
     CONTROL         "Everyday",IDC_ALARMDAY0,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,7,51,11
     CONTROL         "",IDC_ALARMDAY1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,27,51,11
@@ -246,9 +225,9 @@ BEGIN
 END
 
 IDD_PAGECLOCKTEXT DIALOGEX 0, 0, 310, 200
-STYLE DS_SHELLFONT | WS_CHILD | WS_DISABLED
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION
 CAPTION "Clock Text"
-FONT 8, "MS Shell Dlg"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
     GROUPBOX        "Text options",IDC_STATIC,7,3,295,78
     RTEXT           "Font:",IDC_STATIC,14,20,26,10
@@ -295,67 +274,67 @@ BEGIN
 END
 
 IDD_PAGEFORMAT DIALOGEX 0, 0, 310, 200
-STYLE DS_SHELLFONT | WS_CHILD | WS_DISABLED
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION
 CAPTION "Time Format"
-FONT 8, "MS Shell Dlg"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
     GROUPBOX        "Basic clock configuration",IDC_STATIC,7,3,295,151
     RTEXT           "Locale:",IDC_STATIC,107,16,25,10
     COMBOBOX        IDC_LOCALE,138,14,125,120,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
     GROUPBOX        "Date options",IDC_STATIC,17,30,261,44
-    AUTOCHECKBOX    "Month (digit)",IDC_MONTH,24,42,59,11
-    AUTOCHECKBOX    "Month (text)",IDC_MONTHS,24,58,59,11
-    AUTOCHECKBOX    "Day of Month (date)",IDC_DAY,106,42,75,11
-    AUTOCHECKBOX    "Day of Week (text)",IDC_WEEKDAY,106,58,76,11
-    AUTOCHECKBOX    "Year (4 digit)",IDC_YEAR4,212,42,59,11
-    AUTOCHECKBOX    "Year (2 digit)",IDC_YEAR,212,58,59,11
+    CONTROL         "Month (digit)",IDC_MONTH,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,24,42,59,11
+    CONTROL         "Month (text)",IDC_MONTHS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,24,58,59,11
+    CONTROL         "Day of Month (date)",IDC_DAY,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,106,42,75,11
+    CONTROL         "Day of Week (text)",IDC_WEEKDAY,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,106,58,76,11
+    CONTROL         "Year (4 digit)",IDC_YEAR4,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,212,42,59,11
+    CONTROL         "Year (2 digit)",IDC_YEAR,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,212,58,59,11
     GROUPBOX        "Time options",IDC_STATIC,17,78,261,67
-    AUTO3STATE      "New line",IDC_LINEFEED,24,91,65,11
-    AUTOCHECKBOX    "Show 12:xx as 0:xx",IDC_ZERO,106,91,80,11
-    AUTO3STATE      "Hour",IDC_HOUR,24,109,30,11
-    AUTOCHECKBOX    "Minute",IDC_MINUTE,62,109,34,11
-    AUTOCHECKBOX    "Second",IDC_SECOND,106,109,38,11
-    AUTO3STATE      "Internet time (.beats)",IDC_INTERNETTIME,164,109,83,11
-    AUTOCHECKBOX    "12H",IDC_12HOUR,24,128,29,11
-    AUTOCHECKBOX    "AM/PM",IDC_AMPM,62,128,41,11
+    CONTROL         "New line",IDC_LINEFEED,"Button",BS_AUTO3STATE | WS_TABSTOP,24,91,65,11
+    CONTROL         "Show 12:xx as 0:xx",IDC_ZERO,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,106,91,80,11
+    CONTROL         "Hour",IDC_HOUR,"Button",BS_AUTO3STATE | WS_TABSTOP,24,109,30,11
+    CONTROL         "Minute",IDC_MINUTE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,62,109,34,11
+    CONTROL         "Second",IDC_SECOND,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,106,109,38,11
+    CONTROL         "Internet time (.beats)",IDC_INTERNETTIME,"Button",BS_AUTO3STATE | WS_TABSTOP,164,109,83,11
+    CONTROL         "12H",IDC_12HOUR,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,24,128,29,11
+    CONTROL         "AM/PM",IDC_AMPM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,62,128,41,11
     RTEXT           "AM symbol:",IDC_LABAMSYMBOL,110,129,44,11
     COMBOBOX        IDC_AMSYMBOL,157,127,30,120,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
     RTEXT           "PM symbol:",IDC_LABPMSYMBOL,195,129,44,11
     COMBOBOX        IDC_PMSYMBOL,242,127,30,120,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
     GROUPBOX        "",IDC_STATIC,7,159,295,33
-    AUTOCHECKBOX    "Advanced clock format",IDC_CUSTOM,3,159,89,8
+    CONTROL         "Advanced clock format",IDC_CUSTOM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,159,89,8
     EDITTEXT        IDC_FORMAT,14,173,282,12,ES_AUTOHSCROLL
-    LTEXT           "See T-Clock Help.rtf for available formats",IDC_FORMAT_LNK,160,164,135,8,SS_LINK
+    LTEXT           "See T-Clock Help.rtf for available formats",IDC_FORMAT_LNK,160,164,135,8,SS_NOPREFIX | SS_NOTIFY | WS_TABSTOP
 END
 
 IDD_PAGEMOUSE DIALOGEX 0, 0, 310, 200
-STYLE DS_SHELLFONT | WS_CHILD | WS_DISABLED
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION
 CAPTION "Mouse"
-FONT 8, "MS Shell Dlg"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    RTEXT           "Drop files:", IDC_STATIC, 3, 9, 42, 10, SS_RIGHT
-    COMBOBOX        IDC_DROPFILES, 49, 7, 75, 120, WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWNLIST
-    RTEXT           "Application", IDC_LABDROPFILESAPP, 135, 9, 35, 11, SS_RIGHT
-    EDITTEXT        IDC_DROPFILESAPP, 174, 7, 111, 12, ES_AUTOHSCROLL
-    PUSHBUTTON      "...", IDC_DROPFILESAPPSANSHO, 287, 7, 12, 12
-    RTEXT           "Mouse click:", IDC_LABMOUSEBUTTON, 10, 28, 42, 10, SS_RIGHT
-    COMBOBOX        IDC_MOUSEBUTTON, 64, 26, 60, 120, WS_GROUP | WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWNLIST
-    AUTORADIOBUTTON "Single click", IDC_RADSINGLE, 142, 27, 61, 10, WS_GROUP | WS_TABSTOP
-    AUTORADIOBUTTON "Double click", IDC_RADDOUBLE, 215, 27, 66, 10
-    RTEXT           "Action:", IDC_STATIC, 3, 47, 42, 10, SS_RIGHT
-    COMBOBOX        IDC_MOUSEFUNC, 49, 45, 108, 180, WS_GROUP | WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWNLIST
-    EDITTEXT        IDC_MOUSEFILE, 160, 45, 125, 12, ES_AUTOHSCROLL
-    PUSHBUTTON      "...", IDC_MOUSEFILEBROWSE, 287, 45, 12, 12
-    GROUPBOX        "Currently configured mouse options:", IDC_STATIC, 6, 62, 298, 113
-    CONTROL         "",IDC_LIST,WC_LISTVIEW,WS_TABSTOP|LVS_ALIGNLEFT|LVS_NOSORTHEADER|LVS_SINGLESEL|LVS_REPORT, 8,71,294,103
-    AUTOCHECKBOX    "Mouse-over tooltip text:", IDCB_TOOLTIP, 6, 184, 92, 8
-    EDITTEXT        IDC_TOOLTIP, 102, 182, 202, 12, ES_AUTOHSCROLL
+    RTEXT           "Drop files:",IDC_STATIC,3,9,42,10
+    COMBOBOX        IDC_DROPFILES,49,7,75,120,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    RTEXT           "Application",IDC_LABDROPFILESAPP,135,9,35,11
+    EDITTEXT        IDC_DROPFILESAPP,174,7,111,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_DROPFILESAPPSANSHO,287,7,12,12
+    RTEXT           "Mouse click:",IDC_LABMOUSEBUTTON,10,28,42,10
+    COMBOBOX        IDC_MOUSEBUTTON,64,26,60,120,CBS_DROPDOWNLIST | WS_VSCROLL | WS_GROUP | WS_TABSTOP
+    CONTROL         "Single click",IDC_RADSINGLE,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,142,27,61,10
+    CONTROL         "Double click",IDC_RADDOUBLE,"Button",BS_AUTORADIOBUTTON,215,27,66,10
+    RTEXT           "Action:",IDC_STATIC,3,47,42,10
+    COMBOBOX        IDC_MOUSEFUNC,49,45,108,180,CBS_DROPDOWNLIST | WS_VSCROLL | WS_GROUP | WS_TABSTOP
+    EDITTEXT        IDC_MOUSEFILE,160,45,125,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_MOUSEFILEBROWSE,287,45,12,12
+    GROUPBOX        "Currently configured mouse options:",IDC_STATIC,6,62,298,113
+    CONTROL         "",IDC_LIST,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_ALIGNLEFT | LVS_NOSORTHEADER | WS_TABSTOP,8,71,294,103
+    CONTROL         "Mouse-over tooltip text:",IDCB_TOOLTIP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,184,92,8
+    EDITTEXT        IDC_TOOLTIP,102,182,202,12,ES_AUTOHSCROLL
 END
 
 IDD_PAGEQUICKY DIALOGEX 0, 0, 310, 200
-STYLE DS_SHELLFONT | WS_CHILD | WS_DISABLED
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION
 CAPTION "Quicky Menus"
-FONT 8, "MS Shell Dlg"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
     GROUPBOX        "Show or hide Quicky menus",IDC_QMEN_GROUP1,6,6,298,49
     CONTROL         "Exit Windows menu",IDC_QMEN_EXITWIN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,21,79,11
@@ -364,14 +343,13 @@ BEGIN
     CONTROL         "Network drive(s)",IDC_QMEN_NET,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,122,37,69,11
     CONTROL         "Display Properties",IDC_QMEN_DISPLAY,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,225,37,72,11
     GROUPBOX        "Custom Quicky items (double click item to edit)",IDC_QMEN_GROUP2,6,62,298,132
-    CONTROL         "",IDC_QMEN_LIST,WC_LISTVIEW,WS_TABSTOP|LVS_ALIGNLEFT|LVS_NOSORTHEADER|LVS_SINGLESEL|LVS_REPORT, 7,72,295,122
+    CONTROL         "",IDC_QMEN_LIST,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_ALIGNLEFT | LVS_NOSORTHEADER | WS_TABSTOP,7,72,295,122
 END
 
 IDD_QUICKY_ADD DIALOGEX 0, 0, 310, 200
-STYLE DS_SHELLFONT | WS_CHILD | DS_CONTROL | WS_VISIBLE
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD | WS_VISIBLE | WS_CAPTION
 EXSTYLE WS_EX_CONTROLPARENT
-CAPTION ""
-FONT 8, "MS Shell Dlg"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
     GROUPBOX        "Menu item text",IDC_STATIC,16,13,171,34
     EDITTEXT        IDC_MID_MENUTEXT,24,25,155,14,ES_AUTOHSCROLL
@@ -390,97 +368,101 @@ BEGIN
 END
 
 IDD_PAGEHOTKEY DIALOGEX 0, 0, 310, 200
-STYLE DS_SHELLFONT | WS_CHILD | WS_DISABLED
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION
 CAPTION "HotKeys"
-FONT 8, "MS Shell Dlg"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    LTEXT           "Timer - Add/Edit", IDC_STATIC, 11, 8, 81, 9, SS_LEFT, WS_EX_RIGHT
-    CONTROL         "", HK_TIMER_ADD, HOTKEY_CLASS, WS_TABSTOP, 96, 6, 134, 14, WS_EX_LEFT
-    PUSHBUTTON      "revert", IDC_HK_TIMER_ADD_B, 232, 6, 36, 14, 0, WS_EX_LEFT
-    LTEXT           "Timer - Watch List", IDC_STATIC, 11, 26, 81, 9, SS_LEFT, WS_EX_RIGHT
-    CONTROL         "", HK_TIMER_WATCH, HOTKEY_CLASS, WS_TABSTOP, 96, 24, 134, 14, WS_EX_LEFT
-    PUSHBUTTON      "revert", IDC_HK_TIMER_WATCH_B, 232, 24, 36, 14, 0, WS_EX_LEFT
-    LTEXT           "Stopwatch", IDC_STATIC, 11, 44, 81, 9, SS_LEFT, WS_EX_RIGHT
-    CONTROL         "", HK_STOPWATCH, HOTKEY_CLASS, WS_TABSTOP, 96, 42, 134, 14, WS_EX_LEFT
-    PUSHBUTTON      "revert", IDC_HK_STOPWATCH_B, 232, 42, 36, 14, 0, WS_EX_LEFT
-    LTEXT           "Options", IDC_STATIC, 11, 62, 81, 9, SS_LEFT, WS_EX_RIGHT
-    CONTROL         "", HK_SETTINGS, HOTKEY_CLASS, WS_TABSTOP, 96, 60, 134, 14, WS_EX_LEFT
-    PUSHBUTTON      "revert", IDC_HK_SETTINGS_B, 232, 60, 36, 14, 0, WS_EX_LEFT
-    LTEXT           "Calendar", IDC_STATIC, 11, 80, 81, 9, SS_LEFT, WS_EX_RIGHT
-    CONTROL         "", HK_CALENDAR, HOTKEY_CLASS, WS_TABSTOP, 96, 78, 134, 14, WS_EX_LEFT
-    PUSHBUTTON      "revert", IDC_HK_CALENDAR_B, 232, 78, 36, 14, 0, WS_EX_LEFT
-    LTEXT           "Sync time", IDC_STATIC, 11, 98, 81, 9, SS_LEFT, WS_EX_RIGHT
-    CONTROL         "", HK_SNTP, HOTKEY_CLASS, WS_TABSTOP, 96, 96, 134, 14, WS_EX_LEFT
-    PUSHBUTTON      "revert", IDC_HK_SNTP_B, 232, 96, 36, 14, 0, WS_EX_LEFT
+    LTEXT           "Timer - Add/Edit",IDC_STATIC,11,8,81,9,0,WS_EX_RIGHT
+    CONTROL         "",HK_TIMER_ADD,"msctls_hotkey32",WS_TABSTOP,96,6,134,14
+    PUSHBUTTON      "revert",IDC_HK_TIMER_ADD_B,232,6,36,14
+    LTEXT           "Timer - Watch List",IDC_STATIC,11,26,81,9,0,WS_EX_RIGHT
+    CONTROL         "",HK_TIMER_WATCH,"msctls_hotkey32",WS_TABSTOP,96,24,134,14
+    PUSHBUTTON      "revert",IDC_HK_TIMER_WATCH_B,232,24,36,14
+    LTEXT           "Stopwatch",IDC_STATIC,11,44,81,9,0,WS_EX_RIGHT
+    CONTROL         "",HK_STOPWATCH,"msctls_hotkey32",WS_TABSTOP,96,42,134,14
+    PUSHBUTTON      "revert",IDC_HK_STOPWATCH_B,232,42,36,14
+    LTEXT           "Options",IDC_STATIC,11,62,81,9,0,WS_EX_RIGHT
+    CONTROL         "",HK_SETTINGS,"msctls_hotkey32",WS_TABSTOP,96,60,134,14
+    PUSHBUTTON      "revert",IDC_HK_SETTINGS_B,232,60,36,14
+    LTEXT           "Calendar",IDC_STATIC,11,80,81,9,0,WS_EX_RIGHT
+    CONTROL         "",HK_CALENDAR,"msctls_hotkey32",WS_TABSTOP,96,78,134,14
+    PUSHBUTTON      "revert",IDC_HK_CALENDAR_B,232,78,36,14
+    LTEXT           "Sync time",IDC_STATIC,11,98,81,9,0,WS_EX_RIGHT
+    CONTROL         "",HK_SNTP,"msctls_hotkey32",WS_TABSTOP,96,96,134,14
+    PUSHBUTTON      "revert",IDC_HK_SNTP_B,232,96,36,14
 END
 
 IDD_PAGEMISC DIALOGEX 0, 0, 310, 200
-STYLE DS_SHELLFONT | WS_CHILD | WS_DISABLED
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION
 CAPTION "Miscellaneous"
-FONT 8, "MS Shell Dlg"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    GROUPBOX        "", IDC_STATIC, 6, 3, 296, 117
-    AUTOCHECKBOX    "Use T-Clock's calendar", IDCB_USECALENDAR, 2, 3, 85, 8, WS_TABSTOP, WS_EX_TRANSPARENT
-    AUTOCHECKBOX    "Show day of year", IDCB_SHOW_DOY, 12, 16, 73, 10
-    AUTOCHECKBOX    "Show week numbers", IDCB_SHOWWEEKNUMS, 124, 16, 83, 10
-    AUTOCHECKBOX    "Close calendar on lose focus", IDCB_CLOSECAL, 12, 30, 111, 10
-    AUTOCHECKBOX    "Keep calendar always on top of other windows", IDCB_CALTOPMOST, 12, 44, 166, 10
-    LTEXT           "show:", IDC_CALSTATIC1, 211, 30, 60, 8
-    EDITTEXT        IDC_CALMONTHS, 216, 40, 27, 13, ES_AUTOHSCROLL | ES_NUMBER
-    CONTROL         "3", IDC_CALMONTHSPIN, UPDOWN_CLASS, UDS_ALIGNRIGHT | UDS_ARROWKEYS | UDS_WRAP | UDS_AUTOBUDDY | UDS_HOTTRACK | UDS_SETBUDDYINT, 231, 40, 11, 14
-    LTEXT           "month(s)", IDC_CALMONTHS_LABEL, 247, 43, 30, 8
-    EDITTEXT        IDC_CALMONTHSPAST, 216, 58, 27, 13, ES_AUTOHSCROLL | ES_NUMBER
-    CONTROL         "1", IDC_CALMONTHPASTSPIN, UPDOWN_CLASS, UDS_ALIGNRIGHT | UDS_ARROWKEYS | UDS_WRAP | UDS_AUTOBUDDY | UDS_HOTTRACK | UDS_SETBUDDYINT, 231, 58, 11, 14
-    LTEXT           "past month(s)", IDC_CALMONTHSPAST_LABEL, 247, 60, 46, 8
-    PUSHBUTTON      "configure colors", IDC_CALCOLORS, 216, 84, 79, 14
-    GROUPBOX        "(Windows user settings)", IDC_STATIC, 12, 58, 197, 56, 0, WS_EX_RIGHT
-    LTEXT           "First week of year:", IDC_STATIC, 18, 70, 62, 8
-    COMBOBOX        IDC_FIRSTWEEK, 81, 68, 122, 120, WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWNLIST
-    LTEXT           "First day of week:", IDC_STATIC, 18, 86, 62, 8
-    COMBOBOX        IDC_FIRSTDAY, 81, 84, 122, 120, WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWNLIST
-    AUTOCHECKBOX    "Restore previous calendar   (!! global Win10 setting !!)", IDC_OLDCALENDAR, 18, 100, 185, 8
-    GROUPBOX        "Windows 2000 only", IDCB_TRANS2KICONS_GRP, 6, 130, 134, 30
-    AUTOCHECKBOX    "Transparent icon text labels", IDCB_TRANS2KICONS, 12, 144, 104, 10
-    GROUPBOX        "Windows XP+", IDCB_MONOFF_ONLOCK_GRP, 148, 130, 154, 30
-    AUTOCHECKBOX    "Turn off monitors on workstation lock", IDCB_MONOFF_ONLOCK, 154, 144, 132, 10
-    GROUPBOX        "Windows 8+", IDCB_MULTIMON_GRP, 6, 164, 296, 30
-    AUTOCHECKBOX    "Duplicate clock on each additional taskbar", IDCB_MULTIMON, 12, 178, 274, 10
+    GROUPBOX        "",IDC_STATIC,6,3,296,117
+    CONTROL         "Use T-Clock's calendar",IDCB_USECALENDAR,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,2,3,85,8,WS_EX_TRANSPARENT
+    CONTROL         "Show day of year",IDCB_SHOW_DOY,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,16,73,10
+    CONTROL         "Show week numbers",IDCB_SHOWWEEKNUMS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,124,16,83,10
+    CONTROL         "Close calendar on lose focus",IDCB_CLOSECAL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,30,111,10
+    CONTROL         "Keep calendar always on top of other windows",IDCB_CALTOPMOST,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,44,166,10
+    LTEXT           "show:",IDC_CALSTATIC1,211,30,60,8
+    EDITTEXT        IDC_CALMONTHS,216,40,27,13,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "3",IDC_CALMONTHSPIN,"msctls_updown32",UDS_WRAP | UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_HOTTRACK,231,40,11,14
+    LTEXT           "month(s)",IDC_CALMONTHS_LABEL,247,43,30,8
+    EDITTEXT        IDC_CALMONTHSPAST,216,58,27,13,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "1",IDC_CALMONTHPASTSPIN,"msctls_updown32",UDS_WRAP | UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_HOTTRACK,231,58,11,14
+    LTEXT           "past month(s)",IDC_CALMONTHSPAST_LABEL,247,60,46,8
+    PUSHBUTTON      "configure colors",IDC_CALCOLORS,216,84,79,14
+    GROUPBOX        "(Windows user settings)",IDC_STATIC,12,58,197,56,0,WS_EX_RIGHT
+    LTEXT           "First week of year:",IDC_STATIC,18,70,62,8
+    COMBOBOX        IDC_FIRSTWEEK,81,68,122,120,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "First day of week:",IDC_STATIC,18,86,62,8
+    COMBOBOX        IDC_FIRSTDAY,81,84,122,120,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Restore previous calendar   (!! global Win10 setting !!)",IDC_OLDCALENDAR,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,100,185,8
+    GROUPBOX        "Windows 2000 only",IDCB_TRANS2KICONS_GRP,6,130,134,30
+    CONTROL         "Transparent icon text labels",IDCB_TRANS2KICONS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,144,104,10
+    GROUPBOX        "Windows XP+",IDCB_MONOFF_ONLOCK_GRP,148,130,154,30
+    CONTROL         "Turn off monitors on workstation lock",IDCB_MONOFF_ONLOCK,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,154,144,132,10
+    GROUPBOX        "Windows 8+",IDCB_MULTIMON_GRP,6,164,296,30
+    CONTROL         "Duplicate clock on each additional taskbar",IDCB_MULTIMON,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,178,274,10
 END
 
 IDD_CALENDAR_COLOR DIALOG 0, 0, 172, 240
-STYLE DS_3DLOOK | DS_CENTER | DS_MODALFRAME | DS_SHELLFONT | WS_CAPTION | WS_VISIBLE | WS_POPUP | WS_SYSMENU
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
 CAPTION "Calendar colors"
 FONT 8, "Ms Shell Dlg"
-{
-    DEFPUSHBUTTON   "Save", IDOK, 31, 222, 50, 14, 0, WS_EX_LEFT
-    PUSHBUTTON      "Close", IDCANCEL, 90, 222, 50, 14, 0, WS_EX_LEFT
-    COMBOBOX        IDC_CAL_PRESET, 0, 0, 172, 120, WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWNLIST | CBS_HASSTRINGS, WS_EX_LEFT
-    CONTROL         "", IDC_CAL_PREVIEW, MONTHCAL_CLASS, MCS_WEEKNUMBERS, 0, 13, 172, 106, WS_EX_LEFT
-    GROUPBOX        "", IDC_STATIC, 0, 115, 172, 104, 0, WS_EX_LEFT
-    RTEXT           "outer background:", IDC_STATIC, 4, 126, 70, 8, SS_RIGHT, WS_EX_LEFT
-    COMBOBOX        IDC_CAL_OUTER, 77, 124, 70, 180, WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED, WS_EX_LEFT
-    PUSHBUTTON      "...", IDC_CAL_OUTER_BTN, 147, 124, 13, 13, 0, WS_EX_LEFT
-    RTEXT           "text:", IDC_STATIC, 4, 141, 70, 8, SS_RIGHT, WS_EX_LEFT
-    COMBOBOX        IDC_CAL_FORE, 77, 139, 70, 180, WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED, WS_EX_LEFT
-    PUSHBUTTON      "...", IDC_CAL_FORE_BTN, 147, 139, 13, 13, 0, WS_EX_LEFT
-    RTEXT           "background:", IDC_STATIC, 4, 156, 70, 8, SS_RIGHT, WS_EX_LEFT
-    COMBOBOX        IDC_CAL_BACK, 77, 154, 70, 180, WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED, WS_EX_LEFT
-    PUSHBUTTON      "...", IDC_CAL_BACK_BTN, 147, 154, 13, 13, 0, WS_EX_LEFT
-    RTEXT           "month:", IDC_STATIC, 4, 171, 70, 8, SS_RIGHT, WS_EX_LEFT
-    COMBOBOX        IDC_CAL_TITLE, 77, 169, 70, 180, WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED, WS_EX_LEFT
-    PUSHBUTTON      "...", IDC_CAL_TITLE_BTN, 147, 169, 13, 13, 0, WS_EX_LEFT
-    RTEXT           "month background:", IDC_STATIC, 4, 186, 70, 8, SS_RIGHT, WS_EX_LEFT
-    COMBOBOX        IDC_CAL_TITLE_BG, 77, 184, 70, 180, WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED, WS_EX_LEFT
-    PUSHBUTTON      "...", IDC_CAL_TITLE_BG_BTN, 147, 184, 13, 13, 0, WS_EX_LEFT
-    RTEXT           "trailing days:", IDC_STATIC, 4, 201, 70, 8, SS_RIGHT, WS_EX_LEFT
-    COMBOBOX        IDC_CAL_TRAIL, 77, 199, 70, 180, WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED, WS_EX_LEFT
-    PUSHBUTTON      "...", IDC_CAL_TRAIL_BTN, 147, 199, 13, 13, 0, WS_EX_LEFT
-}
+BEGIN
+    DEFPUSHBUTTON   "Save",IDOK,31,222,50,14
+    PUSHBUTTON      "Close",IDCANCEL,90,222,50,14
+    COMBOBOX        IDC_CAL_PRESET,0,0,172,120,CBS_DROPDOWNLIST | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_CAL_PREVIEW,"SysMonthCal32",MCS_WEEKNUMBERS,0,13,172,106
+    GROUPBOX        "",IDC_STATIC,0,115,172,104
+    RTEXT           "outer background:",IDC_STATIC,4,126,70,8
+    COMBOBOX        IDC_CAL_OUTER,77,124,70,180,CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "...",IDC_CAL_OUTER_BTN,147,124,13,13
+    RTEXT           "text:",IDC_STATIC,4,141,70,8
+    COMBOBOX        IDC_CAL_FORE,77,139,70,180,CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "...",IDC_CAL_FORE_BTN,147,139,13,13
+    RTEXT           "background:",IDC_STATIC,4,156,70,8
+    COMBOBOX        IDC_CAL_BACK,77,154,70,180,CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "...",IDC_CAL_BACK_BTN,147,154,13,13
+    RTEXT           "month:",IDC_STATIC,4,171,70,8
+    COMBOBOX        IDC_CAL_TITLE,77,169,70,180,CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "...",IDC_CAL_TITLE_BTN,147,169,13,13
+    RTEXT           "month background:",IDC_STATIC,4,186,70,8
+    COMBOBOX        IDC_CAL_TITLE_BG,77,184,70,180,CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "...",IDC_CAL_TITLE_BG_BTN,147,184,13,13
+    RTEXT           "trailing days:",IDC_STATIC,4,201,70,8
+    COMBOBOX        IDC_CAL_TRAIL,77,199,70,180,CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "...",IDC_CAL_TRAIL_BTN,147,199,13,13
+END
 
-IDD_TIMER DIALOGEX 0, 0, 187, 130
-STYLE DS_SHELLFONT | DS_MODALFRAME | DS_SETFOREGROUND | DS_CENTER | WS_CAPTION | WS_SYSMENU | WS_VISIBLE
+IDD_TIMER DIALOGEX 0, 0, 187, 144
+STYLE DS_SETFONT | DS_MODALFRAME | DS_SETFOREGROUND | DS_FIXEDSYS | DS_CENTER | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
 CAPTION "Timer"
-FONT 8, "MS Shell Dlg"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
     RTEXT           "Timer Name",IDC_STATIC,7,10,38,8
     COMBOBOX        IDC_TIMERNAME,50,8,113,120,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
@@ -498,87 +480,89 @@ BEGIN
     CONTROL         "",IDC_TIMERDAYSPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS,32,30,11,13
     CTEXT           "Days",IDC_STATIC,21,44,17,8
     RTEXT           "File",IDC_STATIC,7,65,14,8
-    COMBOBOX        IDC_TIMERFILE,26,63,138,120,WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN | CBS_AUTOHSCROLL | CBS_HASSTRINGS
+    COMBOBOX        IDC_TIMERFILE,26,63,138,120,CBS_DROPDOWN | CBS_AUTOHSCROLL | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
     PUSHBUTTON      "...",IDC_TIMERFILEBROWSE,165,63,13,13
     RTEXT           "Test",IDC_STATIC,7,88,28,8
     PUSHBUTTON      "",IDC_TIMERTEST,40,85,13,14,BS_ICON
     CONTROL         "Repeat",IDC_TIMERREPEAT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,83,88,39,8
     CONTROL         "Blink clock",IDC_TIMERBLINK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,127,88,51,8
-    DEFPUSHBUTTON   "Start",IDOK,9,107,50,14
-    PUSHBUTTON      "Stop",IDCB_STOPTIMER,68,107,50,14,WS_DISABLED
-    PUSHBUTTON      "Cancel",IDCANCEL,128,107,50,14
+    DEFPUSHBUTTON   "Start",IDOK,9,122,50,14
+    PUSHBUTTON      "Stop",IDCB_STOPTIMER,68,122,50,14,WS_DISABLED
+    PUSHBUTTON      "Cancel",IDCANCEL,128,122,50,14
+    RTEXT           "Number of automatic retriggers",IDC_STATIC,16,106,100,8
+    EDITTEXT        IDC_TIMERRETRIGGERS,121,105,33,13,ES_AUTOHSCROLL
+    CONTROL         "",IDC_TIMERRETRIGSPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS,153,105,12,13
 END
 
 IDD_STOPWATCH DIALOGEX 0, 0, 170, 123
-STYLE DS_CENTER | WS_THICKFRAME | DS_SETFOREGROUND | DS_SHELLFONT | WS_CAPTION | WS_VISIBLE | WS_POPUP | WS_SYSMENU
+STYLE DS_SETFONT | DS_SETFOREGROUND | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
 EXSTYLE WS_EX_APPWINDOW
 CAPTION "Stopwatch"
-FONT 8, "MS Shell Dlg"
-BEGIN // 3 button layout with width: 48, offsets: 6,61,116
-    DEFPUSHBUTTON   "Start (s)", IDC_SW_START, 0, 108, 78, 15
-//    PUSHBUTTON      "Stop (d)",IDC_SW_STOP,61,104,48,14
-    PUSHBUTTON      "Reset (w)", IDC_SW_RESET, 79, 108, 78, 15, WS_DISABLED
-    PUSHBUTTON      "(e)", IDC_SW_EXPORT, 158, 108, 12, 15, BS_CENTER
-    GROUPBOX        "Time Elapsed", IDC_STATIC, 1, 1, 167, 26
-    EDITTEXT        IDC_SW_ELAPSED, 5, 10, 125, 13, ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
-    PUSHBUTTON      "Lap (a)", IDC_SW_LAP, 133, 9, 32, 14
-    CONTROL         "", IDC_SW_LAPS, WC_LISTVIEW, WS_TABSTOP | LVS_ALIGNLEFT | LVS_NOSORTHEADER | LVS_SINGLESEL | LVS_REPORT, 1, 27, 168, 81
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Start (s)",IDC_SW_START,0,108,78,15
+    PUSHBUTTON      "Reset (w)",IDC_SW_RESET,79,108,78,15,WS_DISABLED
+    PUSHBUTTON      "(e)",IDC_SW_EXPORT,158,108,12,15,BS_CENTER
+    GROUPBOX        "Time Elapsed",IDC_STATIC,1,1,167,26
+    EDITTEXT        IDC_SW_ELAPSED,5,10,125,13,ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Lap (a)",IDC_SW_LAP,133,9,32,14
+    CONTROL         "",IDC_SW_LAPS,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_ALIGNLEFT | LVS_NOSORTHEADER | WS_TABSTOP,1,27,168,81
 END
 
 IDD_STOPWATCH_EXPORT DIALOGEX 0, 0, 335, 226
-STYLE DS_CENTER | DS_MODALFRAME | DS_SHELLFONT | WS_CAPTION | WS_VISIBLE | WS_POPUP | WS_SYSMENU
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
 EXSTYLE WS_EX_APPWINDOW
 CAPTION "StopWatch export"
-FONT 8, "MS Shell Dlg"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    DEFPUSHBUTTON   "Process", IDOK, 179, 210, 50, 14
-    PUSHBUTTON      "Save as...", IDC_SWE_EXPORT, 231, 210, 50, 14
-    PUSHBUTTON      "Close", IDCANCEL, 283, 210, 50, 14
-    GROUPBOX        "Header / Footer (start with \\n for footer, otherwise it's a header)", IDC_STATIC, 2, 1, 331, 27
-    EDITTEXT        IDC_SWE_TOTAL, 5, 11, 325, 14, ES_AUTOHSCROLL
-    GROUPBOX        "Laps (\\n=new line, \\t=time, \\#=lap(s), \\l=lap time, \\f=lap flags)", IDC_STATIC, 2, 29, 331, 27
-    EDITTEXT        IDC_SWE_LAP, 5, 39, 325, 14, ES_AUTOHSCROLL
-    GROUPBOX        "Output", IDC_STATIC, 2, 62, 331, 146
-    EDITTEXT        IDC_SWE_OUT, 5, 72, 325, 133, WS_VSCROLL | ES_AUTOHSCROLL | ES_MULTILINE
+    DEFPUSHBUTTON   "Process",IDOK,179,210,50,14
+    PUSHBUTTON      "Save as...",IDC_SWE_EXPORT,231,210,50,14
+    PUSHBUTTON      "Close",IDCANCEL,283,210,50,14
+    GROUPBOX        "Header / Footer (start with \\n for footer, otherwise it's a header)",IDC_STATIC,2,1,331,27
+    EDITTEXT        IDC_SWE_TOTAL,5,11,325,14,ES_AUTOHSCROLL
+    GROUPBOX        "Laps (\\n=new line, \\t=time, \\#=lap(s), \\l=lap time, \\f=lap flags)",IDC_STATIC,2,29,331,27
+    EDITTEXT        IDC_SWE_LAP,5,39,325,14,ES_AUTOHSCROLL
+    GROUPBOX        "Output",IDC_STATIC,2,62,331,146
+    EDITTEXT        IDC_SWE_OUT,5,72,325,133,ES_MULTILINE | ES_AUTOHSCROLL | WS_VSCROLL
 END
 
 IDD_TIMERVIEW DIALOGEX 0, 0, 186, 93
-STYLE DS_SHELLFONT | WS_CAPTION | WS_VISIBLE | WS_MAXIMIZEBOX | WS_MINIMIZEBOX | WS_POPUP | WS_THICKFRAME | WS_SYSMENU
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
 EXSTYLE WS_EX_WINDOWEDGE | WS_EX_APPWINDOW | WS_EX_LAYERED
 CAPTION "Timer Watch"
-FONT 8, "MS Shell Dlg"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    CONTROL         "", IDC_LIST, WC_LISTVIEW, WS_TABSTOP | LVS_ALIGNLEFT | LVS_SHOWSELALWAYS | LVS_SINGLESEL | LVS_REPORT, 0, 0, 186, 93
+    CONTROL         "",IDC_LIST,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_TABSTOP,0,0,186,93
 END
 
 IDD_SNTPCONFIG DIALOGEX 0, 0, 310, 200
-STYLE DS_CENTER | DS_SETFOREGROUND | DS_SHELLFONT | WS_CAPTION | WS_VISIBLE | WS_POPUP | WS_THICKFRAME | WS_SYSMENU
+STYLE DS_SETFONT | DS_SETFOREGROUND | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
 EXSTYLE WS_EX_APPWINDOW
 CAPTION "Configure SNTP Client"
-FONT 8, "MS Shell Dlg", 0, 0, 1
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    DEFPUSHBUTTON   "OK", IDOK, 192, 179, 50, 14
-    PUSHBUTTON      "Cancel", IDCANCEL, 250, 179, 50, 14
-    GROUPBOX        "Synchronization Source", IDC_STATIC, 7, 3, 296, 31
-    RTEXT           "Time Server:", IDC_STATIC, 16, 16, 49, 8, SS_RIGHT
-    COMBOBOX        IDCBX_NTPSERVER, 67, 14, 158, 120, WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN | CBS_AUTOHSCROLL | CBS_HASSTRINGS
-    PUSHBUTTON      "X", IDCB_DELSERVER, 225, 14, 14, 13, BS_ICON
-    PUSHBUTTON      "Sync now", IDCB_SYNCNOW, 246, 13, 50, 14
-    GROUPBOX        "Options", IDC_STATIC, 7, 38, 296, 28
-    AUTOCHECKBOX    "Save Log", IDCBX_SNTPLOG, 19, 50, 47, 8
-    AUTOCHECKBOX    "Message Box", IDCBX_SNTPMESSAGE, 70, 50, 59, 8
-    RTEXT           "Sound:", IDC_STATIC, 136, 50, 24, 8, SS_RIGHT
-    COMBOBOX        IDCBX_SYNCSOUND, 163, 48, 118, 120, WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN | CBS_AUTOHSCROLL | CBS_HASSTRINGS
-    PUSHBUTTON      "...", IDCB_SYNCSOUNDBROWSE, 281, 48, 14, 13
-    GROUPBOX        "", IDC_STATIC, 7, 76, 296, 99
-    CONTROL         "", IDC_LIST, WC_LISTVIEW, WS_TABSTOP | LVS_ALIGNLEFT | LVS_NOSORTHEADER | LVS_SINGLESEL | LVS_REPORT, 11, 84, 288, 88
-    PUSHBUTTON      "Clear log", IDCB_CLEAR, 10, 179, 50, 14
+    DEFPUSHBUTTON   "OK",IDOK,192,179,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,250,179,50,14
+    GROUPBOX        "Synchronization Source",IDC_STATIC,7,3,296,31
+    RTEXT           "Time Server:",IDC_STATIC,16,16,49,8
+    COMBOBOX        IDCBX_NTPSERVER,67,14,158,120,CBS_DROPDOWN | CBS_AUTOHSCROLL | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "X",IDCB_DELSERVER,225,14,14,13,BS_ICON
+    PUSHBUTTON      "Sync now",IDCB_SYNCNOW,246,13,50,14
+    GROUPBOX        "Options",IDC_STATIC,7,38,296,28
+    CONTROL         "Save Log",IDCBX_SNTPLOG,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,19,50,47,8
+    CONTROL         "Message Box",IDCBX_SNTPMESSAGE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,70,50,59,8
+    RTEXT           "Sound:",IDC_STATIC,136,50,24,8
+    COMBOBOX        IDCBX_SYNCSOUND,163,48,118,120,CBS_DROPDOWN | CBS_AUTOHSCROLL | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "...",IDCB_SYNCSOUNDBROWSE,281,48,14,13
+    GROUPBOX        "",IDC_STATIC,7,76,296,99
+    CONTROL         "",IDC_LIST,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_ALIGNLEFT | LVS_NOSORTHEADER | WS_TABSTOP,11,84,288,88
+    PUSHBUTTON      "Clear log",IDCB_CLEAR,10,179,50,14
 END
 
 IDD_ALARMMSG DIALOGEX 0, 0, 255, 168
-STYLE DS_SHELLFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Alert Window Options"
-FONT 8, "MS Shell Dlg"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
     DEFPUSHBUTTON   "OK",IDOK,60,148,50,14
     PUSHBUTTON      "Cancel",IDCANCEL,150,148,50,14
@@ -589,7 +573,7 @@ BEGIN
     LTEXT           "Text:",IDC_STATIC,21,34,17,8
     EDITTEXT        IDC_ALRMMSG_TEXT,41,32,200,13,ES_AUTOHSCROLL
     GROUPBOX        "",IDC_STATIC,7,56,241,87
-    AUTOCHECKBOX    "Bounce it!", IDC_ALRMMSG_BOUN_ENABLE, 3, 56, 43, 8
+    CONTROL         "Bounce it!",IDC_ALRMMSG_BOUN_ENABLE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,56,43,8
     RTEXT           "Speed:",IDC_ALRMMSG_SPEED_ST,21,71,24,8
     EDITTEXT        IDC_ALRMMSG_SPEED,48,68,42,13,ES_CENTER | ES_AUTOHSCROLL
     CONTROL         "",IDC_ALRMMSG_SPEED_SPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS,89,68,11,12
@@ -609,6 +593,7 @@ BEGIN
     CONTROL         "",IDC_ALRMMSG_PAWS_SPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS,220,118,11,12
 END
 
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // Icon
@@ -617,12 +602,19 @@ END
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
 IDI_MAIN                ICON                    "Clock.ico"
+
 IDI_ABOUT_LOGO          ICON                    "../common/icons/white-tiger.ico"
+
 IDI_STOICJOKER          ICON                    "../common/icons/stoic.ico"
+
 IDI_STOICJOKER_XMAS     ICON                    "../common/icons/xmas_stoic.ico"
+
 IDI_PLAY                ICON                    "PLAY.ico"
+
 IDI_STOP                ICON                    "stop.ico"
+
 IDI_DEL                 ICON                    "del.ico"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -630,45 +622,6 @@ IDI_DEL                 ICON                    "del.ico"
 //
 
 IDI_JACKRUSSEL          BITMAP                  "JackRussel.bmp"
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// String Table
-//
-
-STRINGTABLE 
-BEGIN
-    IDS_LIST_TASKNAME       "Menu text"
-    IDS_LIST_TASKTARGET     "Target file"
-    IDS_LIST_TASKSWITCHES   "Switches"
-END
-
-STRINGTABLE 
-BEGIN
-    IDS_NOTFOUNDCLOCK       "Failed to customize clock"
-END
-
-STRINGTABLE 
-BEGIN
-    IDS_ADDALARM            "<Add New...>"
-    IDS_MMFILE              "Multimedia  (*.wav,*.mid,*.pcb,...)"
-    IDS_ALLFILE             "All (*.*)"
-    IDS_PROGRAMFILE         "Program (*.exe,*.cmd)"
-END
-
-STRINGTABLE 
-BEGIN
-    IDS_NONE                "<  disabled  >"
-    IDS_RECYCLE             "Recycle Bin"
-    IDS_OPENBY              "Open with..."
-    IDS_COPYTO              "Copy to..."
-    IDS_MOVETO              "Move to..."
-    IDS_LABPROGRAM          "Application"
-    IDS_LABFOLDER           "Folder"
-END
-
-#endif    // English (U.S.) resources
-/////////////////////////////////////////////////////////////////////////////
 
 
 #ifdef APSTUDIO_INVOKED
@@ -684,11 +637,17 @@ END
 
 2 TEXTINCLUDE 
 BEGIN
-    "#include ""afxres.h""\r\n"
+    "#include ""WinResrc.h""\r\n"
     "\0"
 END
 
 3 TEXTINCLUDE 
+BEGIN
+    "#define IDC_STATIC -1\r\n"
+    "\0"
+END
+
+4 TEXTINCLUDE 
 BEGIN
     "\r\n"
     "\0"
@@ -703,7 +662,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO 
+GUIDELINES DESIGNINFO
 BEGIN
     IDD_PAGEABOUT, DIALOG
     BEGIN
@@ -729,12 +688,25 @@ BEGIN
         BOTTOMMARGIN, 192
     END
 
-    IDD_PAGETARGETFILE, DIALOG
+    IDD_PAGEHOTKEY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 193
+    END
+
+    IDD_PAGEMISC, DIALOG
     BEGIN
         LEFTMARGIN, 7
         RIGHTMARGIN, 303
         TOPMARGIN, 7
-        BOTTOMMARGIN, 192
+        BOTTOMMARGIN, 193
+    END
+
+    IDD_TIMER, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 130
     END
 
     IDD_STOPWATCH, DIALOG
@@ -751,22 +723,6 @@ BEGIN
         RIGHTMARGIN, 179
         TOPMARGIN, 7
         BOTTOMMARGIN, 86
-    END
-
-    IDD_PAGEHOTKEY, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 302
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 193
-    END
-
-    IDD_PAGEMISC, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 303
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 193
     END
 
     IDD_SNTPCONFIG, DIALOG
@@ -786,6 +742,56 @@ BEGIN
     END
 END
 #endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_TIMER AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_LIST_TASKNAME       "Menu text"
+    IDS_LIST_TASKTARGET     "Target file"
+    IDS_LIST_TASKSWITCHES   "Switches"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_NOTFOUNDCLOCK       "Failed to customize clock"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_ADDALARM            "<Add New...>"
+    IDS_MMFILE              "Multimedia  (*.wav,*.mid,*.pcb,...)"
+    IDS_ALLFILE             "All (*.*)"
+    IDS_PROGRAMFILE         "Program (*.exe,*.cmd)"
+    IDS_NONE                "<  disabled  >"
+    IDS_RECYCLE             "Recycle Bin"
+    IDS_OPENBY              "Open with..."
+END
+
+STRINGTABLE
+BEGIN
+    IDS_COPYTO              "Copy to..."
+    IDS_MOVETO              "Move to..."
+    IDS_LABPROGRAM          "Application"
+    IDS_LABFOLDER           "Folder"
+END
+
+#endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
@@ -795,7 +801,7 @@ END
 //
 // Generated from the TEXTINCLUDE 3 resource.
 //
-
+#define IDC_STATIC -1
 
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED

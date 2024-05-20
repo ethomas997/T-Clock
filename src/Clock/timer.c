@@ -70,6 +70,7 @@ struct timer_t {
 	int64_t expire;
 	int id;
 	char hidden;
+	int retrigCount;
 };
 
 static void TimerTrigger(HWND hwnd, int id);
@@ -125,6 +126,7 @@ void TimerEnable(int id, int enable) {
 			tnew[m_timers].id = id;
 			tnew[m_timers].hidden = 0;
 			tnew[m_timers].expire = TimerParseExpire_(subkey);
+			tnew[m_timers].retrigCount = api.GetInt(subkey, L"Retriggers", 0);
 			free(m_timer);
 			m_timer = tnew;
 			++m_timers;
@@ -146,7 +148,17 @@ void OnTimerTimer(HWND hwnd) {
 		if(now >= m_timer[idx].expire){
 			int id = m_timer[idx].id;
 			TimerTrigger(hwnd, id);
-			TimerFree_(idx--);
+
+			if (m_timer[idx].retrigCount > 0) {  // retrigger for the configured count
+				--(m_timer[idx].retrigCount);
+				wchar_t subkey[TNY_BUFF];
+				int offset = wsprintf(subkey, kKeyTimersTimer);
+				wsprintf(subkey + offset, FMT("%d"), id + 1);
+				m_timer[idx].expire = TimerParseExpire_(subkey);
+			} else {
+				TimerFree_(idx--);
+			}
+
 			m_watch_refresh = 1;
 		}
 	}
@@ -314,6 +326,7 @@ typedef struct{
 	wchar_t fname[MAX_BUFF];
 	char bRepeat;
 	char bBlink;
+	int retriggers;
 } timeropt_t;
 
 static void OnTimerName(HWND hwnd) {
@@ -335,6 +348,7 @@ static void OnTimerName(HWND hwnd) {
 			ComboBox_AddStringOnce(GetDlgItem(hwnd,IDC_TIMERFILE), pts->fname, 1, 0);
 			CheckDlgButton(hwnd, IDC_TIMERREPEAT,	pts->bRepeat);
 			CheckDlgButton(hwnd, IDC_TIMERBLINK,	pts->bBlink);
+			SetDlgItemInt(hwnd, IDC_TIMERRETRIGGERS,pts->retriggers, 0);
 			break;
 		}
 	}
@@ -376,6 +390,7 @@ static void OnTimerEditInit(HWND hwnd, int select_id) {
 	SendDlgItemMessage(hwnd, IDC_TIMERMINSPIN, UDM_SETRANGE32, 0,59); // 60 Minutes Max
 	SendDlgItemMessage(hwnd, IDC_TIMERHORSPIN, UDM_SETRANGE32, 0,23); // 24 Hours Max
 	SendDlgItemMessage(hwnd, IDC_TIMERDAYSPIN, UDM_SETRANGE32, 0,7); //  7 Days Max
+	SendDlgItemMessage(hwnd, IDC_TIMERRETRIGSPIN, UDM_SETRANGE32, 0,999);
 	/// add default sound files to file dropdown
 	ComboBoxArray_AddSoundFiles(&file_cb, 1);
 	// add timer to combobox
@@ -392,6 +407,7 @@ static void OnTimerEditInit(HWND hwnd, int select_id) {
 		api.GetStr(subkey, L"File", pts->fname, _countof(pts->fname), L"");
 		pts->bBlink = (char)api.GetInt(subkey, L"Blink", 0);
 		pts->bRepeat = (char)api.GetInt(subkey, L"Repeat", 0);
+		pts->retriggers = api.GetInt(subkey, L"Retriggers", 0);
 		ComboBox_AddString(timer_cb, pts->name);
 		ComboBox_SetItemData(timer_cb, id, pts);
 	}
@@ -410,7 +426,7 @@ static void OnTimerEditInit(HWND hwnd, int select_id) {
 
 static void OnOK(HWND hwnd) {
 	HWND timer_cb = GetDlgItem(hwnd, IDC_TIMERNAME);
-	int id, count, seconds, minutes, hours, days;
+	int id, count, seconds, minutes, hours, days, retriggers;
 	wchar_t subkey[TNY_BUFF];
 	size_t offset;
 	wchar_t name[GEN_BUFF];
@@ -452,6 +468,10 @@ static void OnOK(HWND hwnd) {
 	
 	api.SetInt(subkey, L"Repeat", IsDlgButtonChecked(hwnd, IDC_TIMERREPEAT));
 	api.SetInt(subkey, L"Blink",  IsDlgButtonChecked(hwnd, IDC_TIMERBLINK));
+
+	retriggers = GetDlgItemInt(hwnd, IDC_TIMERRETRIGGERS, 0, 0);
+	api.SetInt(subkey, L"Retriggers", retriggers);
+
 	if(id == count)
 		api.SetInt(kKeyTimers, L"NumberOfTimers", id + 1);
 	
@@ -497,6 +517,7 @@ static void OnDel(HWND hwnd) {
 		api.SetStr(subkey, L"File",		pts->fname);
 		api.SetInt(subkey, L"Repeat",	pts->bRepeat);
 		api.SetInt(subkey, L"Blink",	pts->bBlink);
+		api.SetInt(subkey, L"Retriggers",pts->retriggers);
 	}
 	wsprintf(subkey+offset, FMT("%d"), count);
 	api.DelKey(subkey);

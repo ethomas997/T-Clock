@@ -387,6 +387,8 @@
 #define IDC_TIMERHORSPIN                1907
 #define IDC_TIMERDAYS                   1908
 #define IDC_TIMERDAYSPIN                1909
+#define IDC_TIMERRETRIGGERS             1910
+#define IDC_TIMERRETRIGSPIN             1911
 #define IDC_TIMERFILE                   2010
 #define IDC_TIMERFILEBROWSE             2011
 #define IDC_TIMERTEST                   2012
@@ -410,6 +412,7 @@
 #define IDC_CAL_TITLE_BG_BTN            2120
 #define IDC_CAL_TRAIL                   2121
 #define IDC_CAL_TRAIL_BTN               2122
+#define IDC_STATIC                      -1
 #define GROUP_CALENDAR_COLOR_END        IDC_CAL_TRAIL_BTN
 #define GROUP_CALENDAR_COLOR_NUM        ((1 + GROUP_CALENDAR_COLOR_END - GROUP_CALENDAR_COLOR) / 2)
 /* end group */
