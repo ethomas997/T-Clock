@@ -1,6 +1,10 @@
 // Microsoft Visual C++ generated resource script.
 //
+#define APSTUDIO_HIDDEN_SYMBOLS
 #include <windows.h> // prepares some resource stuff such as WC_STATIC doesn't work without (also includes WinResrc.h)
+#include <prsht.h>
+#undef APSTUDIO_HIDDEN_SYMBOLS
+
 #include <commctrl.h> // UPDOWN_CLASS
 #include "../common/resource.h"
 #include "../common/control_extensions.h"
