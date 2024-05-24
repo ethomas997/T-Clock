@@ -648,69 +648,78 @@ void PlayNoSoundThread(HWND hWnd, const wchar_t* fname, DWORD dwLoops)
 //===================================================*
 int PlayFile(HWND hwnd, const wchar_t* fname, DWORD dwLoops)
 {
-	wchar_t file[MAX_PATH];
-	if(!fname[0] || fname[0]=='<') return FALSE;
-	if(fname[0]!='/' && fname[0]!='\\' && fname[1]!=':' // no abs path
-	&&(fname[0]!='.' || (fname[1]!='/' && fname[1]!='\\' && (fname[1]!='.' ||  (fname[2]!='/' && fname[2]!='\\'))))) // no relative path (strict relative)
-	{ // do it relative to "waves/"
-		wchar_t unused[MAX_PATH];
-		const int len = (int)wcslen(fname)+1; // incl. terminating null
-		if(len < (MAX_PATH-api.root_len-7)){
-			memcpy(file, api.root, api.root_size); // absolute path is at least required by .pcb / PlayNoSoundThread (not for .wav)
-			memcpy(file+api.root_len, L"\\waves\\", (7*sizeof(file[0])));
-			memcpy(file+api.root_len+7, fname, (len*sizeof(file[0])));
-			if(api.GetFileAndOption(file, unused, NULL) == 0){
-				fname = file;
-			}
-		}
-	}
-	
-	if(ext_cmp(fname, L"wav") == 0) {
-		if(m_bMCIPlaying)
-			return FALSE;
-		return PlayWave(hwnd, fname, dwLoops);
-	}
-	
-	if(ext_cmp(fname, L"pcb") == 0) {
-		if(m_bMCIPlaying)
-			return FALSE;
-		PlayNoSoundThread(hwnd, fname, dwLoops);
-		return TRUE;
-	}
-	
-	else if(IsMMFile(fname)) {
-		wchar_t command[MIN_BUFF+MAX_PATH];
-		if(m_bMCIPlaying)
-			return FALSE;
-		wcscpy(command, L"open \"");
-		wcscat(command, fname);
-		wcscat(command, L"\" alias myfile");
-		if(mciSendString(command, NULL, 0, NULL) == 0) {
-			wcscpy(command, L"set myfile time format ");
-			if(wcscasecmp(fname, L"cdaudio") == 0 || ext_cmp(fname, L"cda") == 0) {
-				wcscat(command, L"tmsf"); m_bTrack = TRUE;
-			} else {
-				wcscat(command, L"milliseconds"); m_bTrack = FALSE;
-			}
-			mciSendString(command, NULL, 0, NULL);
-			
-			m_nTrack = -1;
-			if(ext_cmp(fname, L"cda") == 0) {
-				const wchar_t* p;
-				p = fname; m_nTrack = 0;
-				while(*p) {
-					if('0' <= *p && *p <= '9') m_nTrack = m_nTrack * 10 + *p - '0';
-					p++;
+	if (wcsncmp(fname, ALARM_TIMER_STRING, ALARM_TIMER_STRLEN) != 0) {
+
+		// action is not a "TIMER:" item
+		wchar_t file[MAX_PATH];
+		if(!fname[0] || fname[0]=='<') return FALSE;
+		if(fname[0]!='/' && fname[0]!='\\' && fname[1]!=':' // no abs path
+		&&(fname[0]!='.' || (fname[1]!='/' && fname[1]!='\\' && (fname[1]!='.' ||  (fname[2]!='/' && fname[2]!='\\'))))) // no relative path (strict relative)
+		{ // do it relative to "waves/"
+			wchar_t unused[MAX_PATH];
+			const int len = (int)wcslen(fname)+1; // incl. terminating null
+			if(len < (MAX_PATH-api.root_len-7)){
+				memcpy(file, api.root, api.root_size); // absolute path is at least required by .pcb / PlayNoSoundThread (not for .wav)
+				memcpy(file+api.root_len, L"\\waves\\", (7*sizeof(file[0])));
+				memcpy(file+api.root_len+7, fname, (len*sizeof(file[0])));
+				if(api.GetFileAndOption(file, unused, NULL) == 0){
+					fname = file;
 				}
 			}
+		}
+	
+		if(ext_cmp(fname, L"wav") == 0) {
+			if(m_bMCIPlaying)
+				return FALSE;
+			return PlayWave(hwnd, fname, dwLoops);
+		}
+	
+		if(ext_cmp(fname, L"pcb") == 0) {
+			if(m_bMCIPlaying)
+				return FALSE;
+			PlayNoSoundThread(hwnd, fname, dwLoops);
+			return TRUE;
+		}
+	
+		else if(IsMMFile(fname)) {
+			wchar_t command[MIN_BUFF+MAX_PATH];
+			if(m_bMCIPlaying)
+				return FALSE;
+			wcscpy(command, L"open \"");
+			wcscat(command, fname);
+			wcscat(command, L"\" alias myfile");
+			if(mciSendString(command, NULL, 0, NULL) == 0) {
+				wcscpy(command, L"set myfile time format ");
+				if(wcscasecmp(fname, L"cdaudio") == 0 || ext_cmp(fname, L"cda") == 0) {
+					wcscat(command, L"tmsf"); m_bTrack = TRUE;
+				} else {
+					wcscat(command, L"milliseconds"); m_bTrack = FALSE;
+				}
+				mciSendString(command, NULL, 0, NULL);
 			
-			if(PlayMCI(hwnd, m_nTrack) == 0) {
-				m_bMCIPlaying = TRUE;
-				m_countPlay = dwLoops;
-			} else mciSendString(L"close myfile", NULL, 0, NULL);
-		} return m_bMCIPlaying;
-	} else api.ExecFile(fname,hwnd);
-	return FALSE;
+				m_nTrack = -1;
+				if(ext_cmp(fname, L"cda") == 0) {
+					const wchar_t* p;
+					p = fname; m_nTrack = 0;
+					while(*p) {
+						if('0' <= *p && *p <= '9') m_nTrack = m_nTrack * 10 + *p - '0';
+						p++;
+					}
+				}
+			
+				if(PlayMCI(hwnd, m_nTrack) == 0) {
+					m_bMCIPlaying = TRUE;
+					m_countPlay = dwLoops;
+				} else mciSendString(L"close myfile", NULL, 0, NULL);
+			} return m_bMCIPlaying;
+		} else api.ExecFile(fname,hwnd);
+		return FALSE;
+
+	}
+	else {
+		// action is a "TIMER:" item; start up the named timer
+		return StartTimerForName(&fname[ALARM_TIMER_STRLEN]);
+	}
 }
 //=================================================*
 // ------------ Tie Into the Media Control Interface

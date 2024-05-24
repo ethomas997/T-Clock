@@ -74,6 +74,7 @@ struct timer_t {
 };
 
 static void TimerTrigger(HWND hwnd, int id);
+static int64_t TimerParseExpireVal_(const wchar_t* subkey, int64_t tickCount);
 static int64_t TimerParseExpire_(const wchar_t* subkey);
 static void TimerWatch_Delete(int id);
 /**
@@ -154,7 +155,7 @@ void OnTimerTimer(HWND hwnd) {
 				wchar_t subkey[TNY_BUFF];
 				int offset = wsprintf(subkey, kKeyTimersTimer);
 				wsprintf(subkey + offset, FMT("%d"), id + 1);
-				m_timer[idx].expire = TimerParseExpire_(subkey);
+				m_timer[idx].expire = TimerParseExpireVal_(subkey, m_timer[idx].expire);
 			} else {
 				TimerFree_(idx--);
 			}
@@ -208,14 +209,18 @@ static void TimerAdjustIds(int reference_id, int adjustment) {
 	}
 }
 
-static int64_t TimerParseExpire_(const wchar_t* subkey) {
+static int64_t TimerParseExpireVal_(const wchar_t* subkey, int64_t tickCount) {
 	int64_t ret;
-	ret = api.GetTickCount64();
+	ret = tickCount;
 	ret += api.GetInt(subkey, L"Seconds",0) *  1000;
 	ret += api.GetInt(subkey, L"Minutes",0) * 60000;
 	ret += api.GetInt(subkey, L"Hours",0) * 3600000;
 	ret += api.GetInt(subkey, L"Days",0) * 86400000;
 	return ret;
+}
+
+static int64_t TimerParseExpire_(const wchar_t* subkey) {
+	return TimerParseExpireVal_(subkey, api.GetTickCount64());
 }
 
 static void TimerTrigger(HWND hwnd, int id) {
@@ -1166,4 +1171,50 @@ INT_PTR CALLBACK Window_TimerView(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPa
 		break;}
 	}
 	return 0;
+}
+
+/**
+ * \brief adds a list of T-Clock-timer names to given combobox controls
+ * \param boxes[] array of combobox controls
+ * \param num number of controls in \a boxes */
+void ComboBoxArray_AddTimerNames(HWND boxes[], int num)
+{
+	wchar_t subkey[TNY_BUFF];
+	wchar_t buf[GEN_BUFF+ALARM_TIMER_STRLEN+1];
+	size_t offset;
+	int i, id, count;
+
+	offset = wsprintf(subkey, kKeyTimersTimer);
+	count = api.GetInt(kKeyTimers, L"NumberOfTimers", 0);
+	for(id=0; id<count; ++id) {
+		wsprintf(subkey+offset, FMT("%d"), id + 1);
+		wcscpy(buf, ALARM_TIMER_STRING);
+		wchar_t* pos = buf + ALARM_TIMER_STRLEN;
+		api.GetStr(subkey, L"Name", pos, GEN_BUFF, L"");
+		for(i=0; i<num; ++i)
+			ComboBox_AddString(boxes[i], buf);
+	}
+}
+
+/**
+ * \brief starts the T-Clock-timer with the given name
+ * \param timerName timer name */
+int StartTimerForName(const wchar_t* timerName)
+{
+	wchar_t subkey[TNY_BUFF];
+	wchar_t buf[GEN_BUFF+1];
+	size_t offset;
+	int id, count;
+
+	offset = wsprintf(subkey, kKeyTimersTimer);
+	count = api.GetInt(kKeyTimers, L"NumberOfTimers", 0);
+	for(id=0; id<count; ++id) {
+		wsprintf(subkey+offset, FMT("%d"), id + 1);
+		api.GetStr(subkey, L"Name", buf, GEN_BUFF, L"");
+		if (wcscmp(buf, timerName) == 0) {
+			TimerEnable(id, 1);
+			return TRUE;
+		}
+	}
+	return FALSE;
 }

@@ -35,6 +35,9 @@
 #define MOUSEFUNCEXTRAFILE_BEGIN -100
 #define MOUSEFUNC_EXEC           -100
 
+#define ALARM_TIMER_STRING L"TIMER: "
+#define ALARM_TIMER_STRLEN 7
+
 //--+++--> main.c - Application Global Values:
 extern HWND g_hwndTClockMain; /**< our main window for hotkeys, menus and sounds */
 extern HWND g_hwndClock;      /**< the clock hwnd */
@@ -269,6 +272,16 @@ void WatchTimer(int reset);
 void EndAllTimers();
 void DialogTimer(int select_id);
 void OnTimerTimer(HWND hwnd);
+
+/**
+ * \brief adds a list of T-Clock-timer names to given combobox controls
+ * \param boxes[] array of combobox controls
+ * \param num number of controls in \a boxes */
+void ComboBoxArray_AddTimerNames(HWND boxes[], int num);
+/**
+ * \brief starts the T-Clock-timer with the given name
+ * \param timerName timer name */
+int StartTimerForName(const wchar_t* timerName);
 
 // StopWatch.c
 BOOL IsDialogStopWatchMessage(HWND hwnd, MSG* msg);

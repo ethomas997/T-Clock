@@ -213,6 +213,7 @@ void OnInit(HWND hDlg)
 	file_hourly_cb = GetDlgItem(hDlg, IDC_FILEJIHOU);
 	/// add default sound files to sound file dropdown
 	ComboBoxArray_AddSoundFiles(file_boxes, 2);
+	ComboBoxArray_AddTimerNames(file_boxes, 2);
 	/// add "new" entry
 	ComboBox_SetItemData(alarm_cb, ComboBox_AddString(alarm_cb, MyString(IDS_ADDALARM)), 0);
 	/// add alarms
