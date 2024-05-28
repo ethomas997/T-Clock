@@ -1,8 +1,6 @@
 // Microsoft Visual C++ generated resource script.
 //
 #include "../common/resource.h"
-#include "../common/control_extensions.h"
-#include "../common/utl_logging.h"
 
 #define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
@@ -28,7 +26,7 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 
 IDR_MENU MENUEX
 BEGIN
-    POPUP "",                               0,MFT_STRING,MFS_ENABLED
+    POPUP "",                               MFT_STRING,MFT_STRING,MFS_ENABLED
     BEGIN
         MENUITEM "&Adjust date/time",           IDM_FWD_DATETIME,MFT_STRING,MFS_ENABLED
         MENUITEM "&Customize notification icons", IDM_FWD_CUSTOMNOTIFYICONS,MFT_STRING,MFS_ENABLED
@@ -100,7 +98,7 @@ END
 
 IDR_TIMER MENUEX
 BEGIN
-    POPUP "",                               0,MFT_STRING,MFS_ENABLED
+    POPUP "",                               MFT_STRING,MFT_STRING,MFS_ENABLED
     BEGIN
         MENUITEM "&Restart\tR",                 IDM_TIMER_RESTART,MFT_STRING,MFS_ENABLED
         MENUITEM "&Stop\tS",                    IDM_TIMER_STOP,MFT_STRING,MFS_ENABLED
@@ -486,10 +484,10 @@ BEGIN
     PUSHBUTTON      "",IDC_TIMERTEST,40,85,13,14,BS_ICON
     CONTROL         "Repeat",IDC_TIMERREPEAT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,83,88,39,8
     CONTROL         "Blink clock",IDC_TIMERBLINK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,127,88,51,8
-    DEFPUSHBUTTON   "Start",IDOK,9,122,50,14
-    PUSHBUTTON      "Stop",IDCB_STOPTIMER,68,122,50,14,WS_DISABLED
-    PUSHBUTTON      "Cancel",IDCANCEL,128,122,50,14
-    RTEXT           "Number of automatic retriggers",IDC_STATIC,16,106,100,8
+    DEFPUSHBUTTON   "Start",IDOK,9,124,50,14
+    PUSHBUTTON      "Stop",IDCB_STOPTIMER,68,124,50,14,WS_DISABLED
+    PUSHBUTTON      "Cancel",IDCANCEL,128,124,50,14
+    RTEXT           "Number of automatic retriggers",IDC_STATIC,6,106,112,8,0,WS_EX_RIGHT
     EDITTEXT        IDC_TIMERRETRIGGERS,121,105,33,13,ES_AUTOHSCROLL
     CONTROL         "",IDC_TIMERRETRIGSPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS,153,105,12,13
 END
@@ -712,7 +710,6 @@ BEGIN
     IDD_STOPWATCH, DIALOG
     BEGIN
         LEFTMARGIN, 7
-        RIGHTMARGIN, 179
         TOPMARGIN, 7
         BOTTOMMARGIN, 116
     END
