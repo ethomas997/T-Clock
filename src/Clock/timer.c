@@ -360,12 +360,19 @@ static void OnTimerName(HWND hwnd) {
 	if(id < count-1){
 		running = (TimerFindIndexById(id) == -1 ? 0 : 1);
 		SetDlgItemText(hwnd, IDOK, L"Start");
+		if (running) {
+			SetDlgItemText(hwnd, IDCB_STOPTIMER, L"Stop");
+		}else {    // if timer not running then make middle button be 'OK' (for save changes)
+			SetDlgItemText(hwnd, IDCB_STOPTIMER, L"OK");
+		}
+		EnableDlgItem(hwnd, IDCB_STOPTIMER, 1);
 	}else{
 		running = 0;
 		SetDlgItemText(hwnd, IDOK, L"Create");
+		SetDlgItemText(hwnd, IDCB_STOPTIMER, L"Stop");
+		EnableDlgItem(hwnd, IDCB_STOPTIMER, 0);
 	}
 	EnableDlgItem(hwnd, IDOK, !running);
-	EnableDlgItem(hwnd, IDCB_STOPTIMER, running);
 	EnableDlgItem(hwnd, IDC_TIMERDEL, (id < count-1));
 }
 
@@ -429,7 +436,7 @@ static void OnTimerEditInit(HWND hwnd, int select_id) {
 	api.PositionWindow(hwnd, 21);
 }
 
-static void OnOK(HWND hwnd) {
+static void OnOK(HWND hwnd, int startFlag) {
 	HWND timer_cb = GetDlgItem(hwnd, IDC_TIMERNAME);
 	int id, count, seconds, minutes, hours, days, retriggers;
 	wchar_t subkey[TNY_BUFF];
@@ -480,7 +487,8 @@ static void OnOK(HWND hwnd) {
 	if(id == count)
 		api.SetInt(kKeyTimers, L"NumberOfTimers", id + 1);
 	
-	TimerEnable(id, 1);
+	if(startFlag)
+		TimerEnable(id, 1);
 }
 
 static void OnBrowseAction(HWND hwnd, WORD id) {
@@ -559,7 +567,8 @@ static void OnStopTimer(HWND hWnd) {
 	TimerEnable(sel, 0);
 	
 	EnableDlgItem(hWnd, IDOK, 1);
-	EnableDlgItemSafeFocus(hWnd, IDCB_STOPTIMER, 0, IDOK);
+	SetDlgItemText(hWnd, IDCB_STOPTIMER, L"OK");
+	EnableDlgItem(hWnd, IDCB_STOPTIMER, 1);
 }
 
 
@@ -585,7 +594,7 @@ INT_PTR CALLBACK Window_Timer(HWND hwnd, UINT message, WPARAM wParam, LPARAM lPa
 			break;
 			
 		case IDOK:
-			OnOK(hwnd);
+			OnOK(hwnd, 1);
 			/* fall through */
 		case IDCANCEL:
 			DestroyWindow(hwnd);
@@ -598,9 +607,16 @@ INT_PTR CALLBACK Window_Timer(HWND hwnd, UINT message, WPARAM wParam, LPARAM lPa
 				PostMessage(hwnd, WM_COMMAND, MAKEWPARAM(id, CBN_EDITCHANGE), lParam);
 			break;
 			
-		case IDCB_STOPTIMER:
-			OnStopTimer(hwnd);
-			break;
+		case IDCB_STOPTIMER: {
+			wchar_t textBuff[TNY_BUFF+1];
+			GetDlgItemText(hwnd, IDCB_STOPTIMER, textBuff, TNY_BUFF);
+			if (strcmp(textBuff, L"Stop") == 0) {
+				OnStopTimer(hwnd);  // if button is "Stop"
+			} else {  // if button is "OK"
+				OnOK(hwnd, 0);
+				DestroyWindow(hwnd);
+			}
+			break; }
 			
 		case IDC_TIMERFILEBROWSE:
 			OnBrowseAction(hwnd, id);
