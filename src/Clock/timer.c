@@ -61,8 +61,37 @@ void UpdateTimerMenu(HMENU hMenu) {
 }
 
 void TimerMenuItemClick(HMENU hmenu, int itemid) {
-	int id = itemid - IDM_I_TIMER;
+	int id = (itemid < IDM_I_TIMER_FAV) ? itemid - IDM_I_TIMER : itemid - IDM_I_TIMER_FAV;
 	TimerEnable(id, !(GetMenuState(hmenu,itemid,MF_BYCOMMAND)&MF_CHECKED));
+}
+
+void AddTimerFavsMenuItems(HMENU hMenu) {
+
+	int count = api.GetInt(kKeyTimers, L"NumberOfTimers", 0);
+	if (count) {
+		int id;
+		int numFavs = 0;
+		wchar_t buf[GEN_BUFF+16];
+		wchar_t subkey[TNY_BUFF];
+		size_t offset = wsprintf(subkey, kKeyTimersTimer);
+		wcscpy(buf, L"TIMER: ");
+		InsertMenu(hMenu, IDM_SHOWPROP, MF_BYCOMMAND|MF_SEPARATOR, 0, NULL);
+		for (id=0; id<count; ++id) {
+			wsprintf(subkey+offset, FMT("%d"), id + 1);
+			if (api.GetInt(subkey, L"Favorite", 0)) {
+				++numFavs;
+				wchar_t* pos = buf+7;
+				pos += api.GetStr(subkey, L"Name", pos, GEN_BUFF, L"");
+				InsertMenu(hMenu, IDM_SHOWPROP, MF_BYCOMMAND|MF_STRING, IDM_I_TIMER_FAV+id, buf);
+				if(TimerFindIndexById(id) != -1)
+					CheckMenuItem(hMenu, IDM_I_TIMER_FAV+id, MF_BYCOMMAND|MF_CHECKED);
+			}
+		}
+		if (numFavs > 0)
+			InsertMenu(hMenu, IDM_SHOWPROP, MF_BYCOMMAND|MF_SEPARATOR, 0, NULL);
+	} else {
+		InsertMenu(hMenu, IDM_SHOWPROP, MF_BYCOMMAND|MF_SEPARATOR, 0, NULL);
+	}
 }
 
 // structure for active timers
@@ -330,6 +359,7 @@ typedef struct{
 	wchar_t name[kTimerNameLen];
 	wchar_t fname[MAX_BUFF];
 	char bRepeat;
+	char bFavorite;
 	char bBlink;
 	int retriggers;
 } timeropt_t;
@@ -354,6 +384,7 @@ static void OnTimerName(HWND hwnd) {
 			CheckDlgButton(hwnd, IDC_TIMERREPEAT,	pts->bRepeat);
 			CheckDlgButton(hwnd, IDC_TIMERBLINK,	pts->bBlink);
 			SetDlgItemInt(hwnd, IDC_TIMERRETRIGGERS,pts->retriggers, 0);
+			CheckDlgButton(hwnd, IDC_TIMERFAVORITE,	pts->bFavorite);
 			break;
 		}
 	}
@@ -420,6 +451,7 @@ static void OnTimerEditInit(HWND hwnd, int select_id) {
 		pts->bBlink = (char)api.GetInt(subkey, L"Blink", 0);
 		pts->bRepeat = (char)api.GetInt(subkey, L"Repeat", 0);
 		pts->retriggers = api.GetInt(subkey, L"Retriggers", 0);
+		pts->bFavorite = (char)api.GetInt(subkey, L"Favorite", 0);
 		ComboBox_AddString(timer_cb, pts->name);
 		ComboBox_SetItemData(timer_cb, id, pts);
 	}
@@ -484,6 +516,8 @@ static void OnOK(HWND hwnd, int startFlag) {
 	retriggers = GetDlgItemInt(hwnd, IDC_TIMERRETRIGGERS, 0, 0);
 	api.SetInt(subkey, L"Retriggers", retriggers);
 
+	api.SetInt(subkey, L"Favorite", IsDlgButtonChecked(hwnd, IDC_TIMERFAVORITE));
+
 	if(id == count)
 		api.SetInt(kKeyTimers, L"NumberOfTimers", id + 1);
 	
@@ -531,6 +565,7 @@ static void OnDel(HWND hwnd) {
 		api.SetInt(subkey, L"Repeat",	pts->bRepeat);
 		api.SetInt(subkey, L"Blink",	pts->bBlink);
 		api.SetInt(subkey, L"Retriggers",pts->retriggers);
+		api.SetInt(subkey, L"Favorite",	pts->bFavorite);
 	}
 	wsprintf(subkey+offset, FMT("%d"), count);
 	api.DelKey(subkey);

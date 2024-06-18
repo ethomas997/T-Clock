@@ -48,7 +48,8 @@ void OnContextMenu(HWND hwnd, HWND hwnd_from, int xPos, int yPos)
 	// AlarmsTimer Menu Item y/n Goes HERE!!!
 	UpdateAlarmMenu(hPopupMenu);
 	UpdateTimerMenu(hPopupMenu); // Get the List of Active Timers.
-	
+	AddTimerFavsMenuItems(hPopupMenu);
+
 	if(g_bQMLaunch) {
 		wchar_t key[TNY_BUFF];
 		int offset = 9;
@@ -88,7 +89,7 @@ void OnContextMenu(HWND hwnd, HWND hwnd_from, int xPos, int yPos)
 	SetForegroundWindow(hwnd_from); // mainly for Keyboard use with `Win+B`; doesn't seem to bug below window creation
 	if(item) {
 		if(item >= IDM_I_BEGIN_) {
-			if(item >= IDM_I_TIMER && item < (IDM_I_TIMER+1000)){
+			if(item >= IDM_I_TIMER && item < (IDM_I_TIMER_FAV+1000)){
 				TimerMenuItemClick(hMenu, item);
 			}else if(item >= IDM_I_ALARM && item < (IDM_I_ALARM+1000)){
 				AlarmEnable(item - IDM_I_ALARM, -1);

@@ -395,6 +395,7 @@
 #define IDC_TIMERREPEAT                 2013
 #define IDC_TIMERBLINK                  2014
 #define IDCB_STOPTIMER                  2015
+#define IDC_TIMERFAVORITE               2016
 
 #define IDC_CAL_PRESET                  2101
 #define IDC_CAL_PREVIEW                 2102
@@ -425,7 +426,8 @@
 #define IDM_I_BEGIN_                    IDM_I_ALARM
 #define IDM_I_ALARM                     60000 /* first alarm menu index */
 #define IDM_I_TIMER                     61000 /* first timer menu index */
-#define IDM_I_MENU                      62000 /* first custom menu index */
+#define IDM_I_TIMER_FAV                 62000 /* first timer menu index (favorites) */
+#define IDM_I_MENU                      63000 /* first custom menu index */
 #define __IDEND__                       65535
 
 // Next default values for new objects

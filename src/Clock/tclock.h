@@ -255,6 +255,7 @@ void CheckMouseMenu();
 
 // timer.c
 void UpdateTimerMenu(HMENU hMenu);
+void AddTimerFavsMenuItems(HMENU hMenu);
 
 /**
  * \brief enable / disable timer
